@@ -42,13 +42,13 @@ return {
     LineAdded = '',
     LineModified = '',
     LineRemoved = '',
-    FileDeleted = '✖',
+    FileDeleted = '✗',
     FileIgnored = '◌',
     FileRenamed = '➜',
     FileStaged = '✓',
     FileUnmerged = '',
-    FileUnstaged = '',
-    FileUntracked = '',
+    FileUnstaged = '★',
+    FileUntracked = '?',
     FileConflict = "",
     Diff = '',
     Repo = '󰊢',
@@ -67,14 +67,8 @@ return {
   file = {
     ReadOnly = '',
     New = '',
-    Modified = '',
+    Modified = '●',
     Path = '',
-  },
-
-  folder = {
-    Open = '',
-    Closed = '',
-    Empty = ''
   },
 
   diagnostics = {
