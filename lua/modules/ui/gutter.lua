@@ -14,11 +14,11 @@ function M.config()
     -- configuration goes here, for example:
     relculright = true,
     segments = {
-      { text = { builtin.foldfunc }, click = "v.lua:ScFa" },
-      { sign = { name = { "Diagnostic" }, maxwidth = 1, colwidth = 1, auto = true }, click = "v.lua:ScSa" },
-      { sign = { name = { "Dap*" }, maxwidth = 1, colwidth = 1, auto = true }, click = "v.lua:ScSa" },
-      { text = { builtin.lnumfunc, " " }, click = "v.lua:ScLa" },
-      { sign = { namespace = { "gitsign" }, maxwidth = 1, colwidth = 2, auto = true }, click = "v.lua:ScSa" },
+      { text = { builtin.foldfunc }, click = "v:lua.ScFa" },
+      { sign = { name = { "Diagnostic" }, maxwidth = 1, colwidth = 1, auto = true }, click = "v:lua.ScSa" },
+      { sign = { name = { "Dap*" }, maxwidth = 1, colwidth = 1, auto = true }, click = "v:lua.ScSa" },
+      { text = { builtin.lnumfunc, " " }, click = "v:lua.ScLa" },
+      { sign = { namespace = { "gitsign" }, maxwidth = 1, colwidth = 2, auto = true }, click = "v:lua.ScSa" },
     }
   }
 end
