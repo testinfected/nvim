@@ -39,12 +39,13 @@ This configuration can serve as a starting point if you want to build your own p
 
 The following tools are required for the plugins to work properly and provide the best experience:
 
-- [NPM](https://nodejs.org)
-- [Fzf](https://github.com/junegunn/fzf)
-- [Sad](https://github.com/ms-jpq/sad)
-- [LazyGit](https://github.com/jesseduffield/lazygit)
-- [Delta](https://github.com/pocco81/true-zen.nvim)
-- [RipGrep](https://github.com/BurntSushi/ripgrep)
+- [npm](https://nodejs.org)
+- [fzf](https://github.com/junegunn/fzf): CLI Fuzzy finder
+- [sad](https://github.com/ms-jpq/sad): CLI search and replace
+- [fd](https://github.com/sharkdp/fd): Modern find alternative
+- [lazygit](https://github.com/jesseduffield/lazygit): Git TUI
+- [delta](https://github.com/dandavison/delta): Syntax highlighting pager for git, diff and grep
+- [ripgrep](https://github.com/BurntSushi/ripgrep): Grep on steroids
 
 ## Plugin Management
 
