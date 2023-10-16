@@ -95,8 +95,7 @@ function M.config()
         }),
 
         formatting = {
-            -- changing the order of fields so the icon is the first
-            fields = { 'menu', 'abbr', 'kind' },
+            fields = { 'abbr', 'kind', 'menu' },
 
             format = lspkind.cmp_format {
                 -- defines how annotations are shown
@@ -108,10 +107,10 @@ function M.config()
                 -- preset = 'codicons',
 
                 menu = {
-                    nvim_lsp = icons.lsp.Lambda,
-                    luasnip = icons.kind.Snippet,
-                    buffer = icons.file.Modified,
-                    path = icons.file.Path,
+                    nvim_lsp = icons.lsp.Lsp,
+                    luasnip = icons.lsp.Luasnip,
+                    buffer = icons.lsp.Buffer,
+                    path = icons.lsp.Path,
                     nvim_lua = icons.lsp.Lua,
                     latex_symbols = icons.lsp.Latex,
                 }
