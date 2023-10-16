@@ -82,11 +82,13 @@ return {
     },
 
     ui = {
+        ChevronRight = "",
         RightPill = '',
         LeftPill = '',
         VerticalLine = '|',
         VerticalLineThick = '┃',
         VerticalDottedLine = '',
         VerticalDottedLineThick = '󰇙',
+        Telescope = "",
     }
 }

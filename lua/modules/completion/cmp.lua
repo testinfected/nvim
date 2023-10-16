@@ -27,6 +27,19 @@ function M.config()
     local luasnip = require('luasnip')
     local icons = require('config.icons')
 
+   	local border = function(hl)
+		return {
+            { '╭',  hl },
+            { '─',  hl },
+            { '╮',  hl },
+            { '│',  hl },
+            { '╯',  hl },
+            { '─',  hl },
+            { '╰',  hl },
+            { '│',  hl },
+		}
+	end
+
     cmp.setup {
         completion = {
             -- Disable the completion menu, you must invoke it with <c-space>
@@ -105,14 +118,23 @@ function M.config()
             }
         },
 
-        window = {
-            completion = cmp.config.window.bordered(),
-            documentation = cmp.config.window.bordered(),
-        },
+       	window = {
+			completion = {
+				border = border("PmenuBorder"),
+				winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+				scrollbar = false,
+			},
+			documentation = {
+				border = border("CmpDocBorder"),
+				winhighlight = "Normal:CmpDoc",
+			},
+		},
 
         experimental = {
-            ghost_text = true,
-        },
+			ghost_text = {
+				hl_group = "Whitespace",
+			},
+        }
     }
 
     -- Use buffer source for `/` and `?` (don't enable `native_menu`, otherwise this won't work).
