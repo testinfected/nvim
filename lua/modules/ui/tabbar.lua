@@ -40,8 +40,15 @@ function M.config()
           padding = 1,
         },
         {
-          filetype = 'neo-tree',
+          filetype = 'NvimTree',
           text = "Project files",
+          highlight = 'PanelHeading',
+          --highlight = 'Directory',
+          text_align = 'center',
+        },
+        {
+          filetype = 'OverseerList',
+          text = "Tasks",
           highlight = 'PanelHeading',
           --highlight = 'Directory',
           text_align = 'center',
