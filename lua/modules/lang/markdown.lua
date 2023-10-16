@@ -6,7 +6,7 @@
 
 local M = {
   'ellisonleao/glow.nvim',
-  ft = { 'md' },
+  ft = { 'markdown' },
 }
 
 function M.config()
