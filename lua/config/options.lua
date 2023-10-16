@@ -16,12 +16,9 @@ vim.keymap.set({ 'n', 'v' }, '<leader>', '<Nop>', { silent = true })
 
 -- Buffers {{{
 vim.o.autoread = true -- reload file if changed outside nvim
-vim.o.autowrite = true
--- }}},
-
--- Buffers {{{
-vim.o.autoread = true -- reload file if changed outside nvim
 vim.o.autowrite = true -- autowrite file
+vim.o.autowriteall = true
+vim.o.switchbuf = "usetab,uselast"
 ---}}},
 
 -- Tabs {{{
@@ -57,6 +54,7 @@ vim.o.showmatch = true -- Highlight search instances
 -- Sessions {{{
 vim.o.sessionoptions = 'buffers,curdir,globals,tabpages,winpos,winsize' -- Save these in session
 vim.o.backup = false -- Don't create a backup file
+vim.o.swapfile = false -- We don't need a swap file
 -- }}}
 
 -- Term {{{
@@ -64,9 +62,16 @@ vim.o.backup = false -- Don't create a backup file
 vim.o.termguicolors = true
 -- }}}
 
--- Window {{{
+-- Window and menus {{{
 vim.o.splitbelow = true -- Put new windows below current
 vim.o.splitright = true -- Put new vertical splits to right
+vim.o.previewheight = 12
+-- Do NOT adjust the following option (pumblend) if you're using transparent background
+vim.o.pumblend = 0
+vim.o.pumheight = 15
+vim.o.winblend = 0
+vim.o.winminwidth = 10
+vim.o.winwidth = 30
 -- }}}
 
 -- Wild Menu {{{
@@ -77,6 +82,7 @@ vim.o.wildmode = 'longest:full,full'
 -- Cmdline {{{
 vim.o.cmdwinheight = 10
 vim.o.ruler = false
+vim.o.showcmd = false
 -- }}}
 
 vim.g.VM_set_statusline = 0 -- disable VM's statusline updates to prevent clobbering
