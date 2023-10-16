@@ -4,6 +4,12 @@ A well structured NeoVim configuration packed with features.
 
 This configuration can serve as a starting point if you want to build your own personal configuration. Well documented, at the top of each file you can find a frontmatter which provides information.
 
+<img width="1671" alt="Screenshot 2023-10-16 at 01 12 51" src="https://github.com/testinfected/nvim/assets/128804/d43af1e7-4e7a-4bdf-a300-9c068fef6b07">
+<img width="1671" alt="Screenshot 2023-10-16 at 01 12 28" src="https://github.com/testinfected/nvim/assets/128804/63d120fc-162c-461d-94aa-4a32be9c0edd">
+<img width="1671" alt="Screenshot 2023-10-16 at 01 16 25" src="https://github.com/testinfected/nvim/assets/128804/a070f5e7-b938-40ac-be09-9bc070a85fcc">
+<img width="1671" alt="Screenshot 2023-10-16 at 01 16 37" src="https://github.com/testinfected/nvim/assets/128804/6070b19f-f0e8-42f0-ba67-b6dfa2b3c515">
+<img width="1671" alt="Screenshot 2023-10-16 at 01 11 02" src="https://github.com/testinfected/nvim/assets/128804/4fa9c959-46b9-4133-9058-0df3612af1ec">
+
 # Structure
 
 ```
