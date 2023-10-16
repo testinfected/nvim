@@ -1,8 +1,7 @@
 
 --[[
-  File: dressing.lua
   Description: Improved vim.ui interfaces
-  See: https://github.com/goolord/alpha-nvim
+  See: https://github.com/stevearc/dressing.nvim
 ]]
 
 local M = {

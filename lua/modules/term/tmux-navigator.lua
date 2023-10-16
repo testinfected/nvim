@@ -1,7 +1,6 @@
 --[[
-  File: tmux-navigatro.lua
   Description: Seamless navigation between tmux panes and vim splits
-  See: https://github.com/goolord/alpha-nvim
+  See: https://github.com/christoomey/vim-tmux-navigator
 ]]
 
 return {

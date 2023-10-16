@@ -1,4 +1,5 @@
 # About
+
 A well structured NeoVim configuration packed with features.
 
 This configuration can serve as a starting point if you want to build your own personal configuration. Well documented, at the top of each file you can find a frontmatter which provides information.
@@ -11,25 +12,25 @@ This configuration can serve as a starting point if you want to build your own p
 │
 ├── lua
 │  ├── config                 -- User configuration
-│  │  ├── options.lua         -- NeoVim options 
+│  │  ├── options.lua         -- NeoVim options
 │  │  └── keymaps.lua         -- General keybindings
-│  │  └── icons.lua           -- Icons definitions 
-│  │  
+│  │  └── icons.lua           -- Icons definitions
+│  │
 │  ├── core                   -- Plugin management
-│  │  ├── hotspot.lua         -- Hotpot compiler (to write your plugins in Fennel) 
-│  │  └── lazy.lua            -- Plugin manager 
-│  │  └── loader.lua          -- Plugin loader 
-│  │  
+│  │  ├── hotspot.lua         -- Hotpot compiler (to write your plugins in Fennel)
+│  │  └── lazy.lua            -- Plugin manager
+│  │  └── loader.lua          -- Plugin loader
+│  │
 │  ├── modules                -- Plugins organized in modules
 │  │  ├── code.lua            -- Code related plugins
-│  │  ├── completion.lua      -- Code completion plugins 
+│  │  ├── completion.lua      -- Code completion plugins
 │  │  ├── debugger.lua        -- Debugger related plugins
 │  │  ├── editor.lua          -- Plugins to enhance edition experience
-│  │  ├── lang.lua            -- Programming languages specific plugins 
-│  │  ├── lsp.lua             -- Language servers support 
-│  │  ├── term.lua            -- Terminal plugins 
-│  │  ├── tools.lua           -- Various utilities 
-│  │  ├── ui.lua              -- Plugins for better user experience 
+│  │  ├── lang.lua            -- Programming languages specific plugins
+│  │  ├── lsp.lua             -- Language servers support
+│  │  ├── term.lua            -- Terminal plugins
+│  │  ├── tools.lua           -- Various utilities
+│  │  ├── ui.lua              -- Plugins for better user experience
 ```
 
 # Plugins
@@ -38,86 +39,96 @@ This configuration can serve as a starting point if you want to build your own p
 
 The following tools are required for the plugins to work properly and provide the best experience:
 
-* [NPM](https://nodejs.org)
-* [Fzf](https://github.com/junegunn/fzf)
-* [Sad](https://github.com/ms-jpq/sad)
-* [LazyGit](https://github.com/jesseduffield/lazygit)
-* [Delta](https://github.com/pocco81/true-zen.nvim)
-* [RipGrep](https://github.com/BurntSushi/ripgrep)
+- [NPM](https://nodejs.org)
+- [Fzf](https://github.com/junegunn/fzf)
+- [Sad](https://github.com/ms-jpq/sad)
+- [LazyGit](https://github.com/jesseduffield/lazygit)
+- [Delta](https://github.com/pocco81/true-zen.nvim)
+- [RipGrep](https://github.com/BurntSushi/ripgrep)
 
-## Plugin Management 
-- [Lazy](https://github.com/folke/lazy.nvim)
+## Plugin Management
+
+- [lazy-nvim](https://github.com/folke/lazy.nvim)
 
 ## Code
-- [Autopairs](https://github.com/windwp/nvim-autopair)
-- [Autotags](https://github.com/windwp/nnvim-ts-autotag)
-- [Colorizer](https://github.com/NvChad/nvim-colorizer.lua)
-- [Comments](https://github.com/numToStr/Comment.nvim)
-- [Rainbow delimiters](https://github.com/HiPhish/rainbow-delimiters.nvim)
-- [Tree Sitter Context](https://github.com/nvim-treesitter/nvim-treesitter-context)
-- [Trouble.nvim](https://github.com/folke/trouble.nvim)
-- [Git Signs](https://github.com/lewis6991/gitsigns.nvim)
-- [Illuminate](https://github.com/RRethy/vim-illuminate)
-- [Indent blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
-- [Neotest](https://github.com/nvim-neotest/neotest)
-- [Surround](https://github.com/kylechui/nvim-surround)
+
+- [nvim-autopair](https://github.com/windwp/nvim-autopair): Autopairs with support for multiple chars
+- [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag): Autoclose and autorename tags
+- [nvim-colorizer](https://github.com/NvChad/nvim-colorizer.lua): Color highlighter
+- [Comment](https://github.com/numToStr/Comment.nvim): Operator to toggle comments
+- [rainbow-delimiters](https://github.com/HiPhish/rainbow-delimiters.nvim): Rainbow delimiters using treesitter
+- [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context): Code context
+- [trouble.nvim](https://github.com/folke/trouble.nvim): Pretty diagnostics
+- [gitsigns](https://github.com/lewis6991/gitsigns.nvim): Git gutter decorations
+- [vim-illuminate](https://github.com/RRethy/vim-illuminate): Automatic highlighting of word under cursor
+- [indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim): Ident guides
+- [neotest](https://github.com/nvim-neotest/neotest): Framework for interacting with tests
+- [nvim-surround](https://github.com/kylechui/nvim-surround): Surrounding delimiters with ease
 
 ## Completion
-- [Cmp](https://github.com/hrsh7th/nvim-cmp)
+
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp): Completion engine
 
 ## Debugger
-- [DAP](https://github.com/mfussenegger/nvim-dap)
-- [DAP UI](https://github.com/rcarriga/nvim-dap-ui)
-- [Mason DAP](https://github.com/jay-babu/mason-nvim-dap.nvim)
-- [Cmp DAP](https://github.com/rcarriga/cmp-dap)
+
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap): Debug adapter protocol client
+- [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui): UI for nvim-dap
+- [mason-nvim-dap](https://github.com/jay-babu/mason-nvim-dap.nvim): Install debug adapters with Mason
+- [cmp-dap](https://github.com/rcarriga/cmp-dap): Completion source for nvim-dap
 
 ## Editor
-- [Abolish](https://github.com/tpope/vim-abolish)
-- [Better Escape](https://github.com/max397574/better-escape.nvim)
-- [Beacon](https://github.com/DanilaMihailov/beacon.nvim)
-- [UFO](https://github.com/kevinhwang91/nvim-ufo)
-- [Range Highlight](https://github.com/rktjmp/winston0410/range-highlight.nvim)
-- [Relavtive Toggle](https://github.com/cpea2506/relative-toggle.nvim)
-- [Repeat](https://github.com/tpope/vim-repeat)
-- [Sad](https://github.com/ray-x/sad.nvim)
-- [Unimpaired](https://github.com/tummetott/unimpaired.nvim)
+
+- [vim-abolish](https://github.com/tpope/vim-abolish): Work with variants of a word
+- [better-escape](https://github.com/max397574/better-escape.nvim): Quick escape from insert mode
+- [beacon](https://github.com/DanilaMihailov/beacon.nvim): Flash cursor on jump
+- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo): Modern looking folds
+- [range-highlight](https://github.com/rktjmp/winston0410/range-highlight.nvim): Automatically highlight ranges
+- [relative-toggle](https://github.com/cpea2506/relative-toggle.nvim): Automatic toggle to relative line numbers
+- [vim-repeat](https://github.com/tpope/vim-repeat): Extended usage of repeat (.) command
+- [sad](https://github.com/ray-x/sad.nvim): Search and replace
+- [unimpaired](https://github.com/tummetott/unimpaired.nvim): Pairs of useful mappings
 
 ## Lang
- - [Hotpot](https://github.com/rktjmp/hotpot.nvim)
- - [Go](https://github.com/ray-x/go.nvim)
- - [Markdown](https://github.com/ellisonleao/glow.nvim)
+
+- [hotpot](https://github.com/rktjmp/hotpot.nvim): Hotpot fennel compiler
+- [go](https://github.com/ray-x/go.nvim): Golang plugin
+- [glow](https://github.com/ellisonleao/glow.nvim): Markdown previewer
 
 ## Lsp
- - [Lsp Config](https://github.com/neovim/nvim-lspconfig)
- - [Lsp Saga](https://github.com/neovim/nvim-lspconfig)
- - [Null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim)
+
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig): Quickstart LSP configs
+- [lspsaga](https://github.com/nvimdev/lspsaga.nvim): Improved LSP experience
+- [null-ls](https://github.com/jose-elias-alvarez/null-ls.nvim): Inject LSP diagnostics
+- [lspkind](https://github.com/onsails/lspkind.nvim): Icons for completion menu
 
 ## Term
- - [ToggleTerm](https://github.com/akinsho/toggleterm.nvim)
- - [Tmux Navigator](https://github.com/goolord/alpha-nvim)
+
+- [toggleterm](https://github.com/akinsho/toggleterm.nvim): Terminal window
+- [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator): Seamless navigation between tmxux and neovim
 
 ## Tools
-- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-- [Telescope FileBrowser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
-- [Tree Sitter](https://github.com/tree-sitter/tree-sitter)
-- [Tree Sitter Targets](https://github.com/wellle/targets.vim)
-- [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-- [Project](https://github.com/ahmedkhalf/project.nvim)
-- [Persisted](https://github.com/olimorris/persisted.nvim)
-- [Mason](https://github.com/williamboman/mason.nvim)
-- [Overseer](https://github.com/stevearc/overseer.nvim)
-- [Lspkind](https://github.com/onsails/lspkind.nvim)
+
+- [telescope](https://github.com/nvim-telescope/telescope.nvim): Fuzzy finder
+- [telescope-file-browser](https://github.com/nvim-telescope/telescope-file-browser.nvim): Filebrowser extension for Telescope
+- [tree-sitter](https://github.com/tree-sitter/tree-sitter): Syntax highlighter
+- [targets](https://github.com/wellle/targets.vim): Additional targets from text objects
+- [nvim-tree](https://github.com/nvim-tree/nvim-tree.nvim): File explorer
+- [project](https://github.com/ahmedkhalf/project.nvim): Project management
+- [persisted](https://github.com/olimorris/persisted.nvim): Automated session management
+- [mason](https://github.com/williamboman/mason.nvim): Package manager for lsp and dap servers
+- [overseer](https://github.com/stevearc/overseer.nvim): Task runner and job manager
 
 ## UI
-- [Catppuccin](https://github.com/catppuccin/nvim)
-- [Alpha](https://github.com/goolord/alpha-nvim)
-- [Web Dev Icons](https://github.com/nvim-tree/nvim-web-devicons)
-- [Dressing](https://github.com/goolord/alpha-nvim)
-- [StatusCol](https://github.com/luukvbaal/statuscol.nvim)
-- [Which Key](https://github.com/folke/which-key.nvim)
-- [Notifier](https://github.com/vigoux/notifier.nvim)
-- [Noice](https://github.com/folke/noice.nvim)
-- [Lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [Prettier Quick Fix](https://github.com/yorickpeterse/nvim-pqf)
-- [Bufferline](https://github.com/akinsho/bufferline.nvim)
-- [True Zen](https://github.com/pocco81/true-zen.nvim)
+
+- [catppuccin](https://github.com/catppuccin/nvim): Catppuccin theme
+- [alpha](https://github.com/goolord/alpha-nvim): Start screen
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons): Additional icons
+- [dressing](https://github.com/stevearc/dressing.nvim): Improved vim.ui interfaces
+- [statuscol](https://github.com/luukvbaal/statuscol.nvim): Configurable status column with click handlers
+- [which-key](https://github.com/folke/which-key.nvim): Keymap help
+- [notifier](https://github.com/vigoux/notifier.nvim): Non intrusive notification system
+- [noice](https://github.com/folke/noice.nvim): Replacement for command line
+- [lualine](https://github.com/nvim-lualine/lualine.nvim): Configurable statusline
+- [nvim-pqf](https://github.com/yorickpeterse/nvim-pqf): Prettier QuickFix list
+- [bufferline](https://github.com/akinsho/bufferline.nvim): Snazzy bufferline  
+- [true-zen](https://github.com/pocco81/true-zen.nvim): Distraction free coding
