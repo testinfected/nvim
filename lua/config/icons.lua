@@ -119,6 +119,7 @@ return {
 
     ui = {
         ChevronRight = "",
+        Separator = "",
         RightPill = '',
         LeftPill = '',
         VerticalLine = '|',

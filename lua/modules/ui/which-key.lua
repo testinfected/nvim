@@ -11,6 +11,7 @@ local M = {
 
 function M.config()
     local wk = require('which-key')
+    local icons = require('config.icons')
     wk.setup {
         window = {
             border = 'rounded', -- none, single, double, shadow
@@ -25,6 +26,9 @@ function M.config()
             spacing = 3, -- spacing between columns
             align = "left", -- align columns left, center or right
         },
+        icons = {
+			breadcrumb = icons.ui.Separator,
+        }
     }
 
     wk.register {
