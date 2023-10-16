@@ -41,7 +41,7 @@ This configuration can serve as a starting point if you want to build your own p
 
 # Plugins
 
-## Requirement's
+## Requirements
 
 The following tools are required for the plugins to work properly and provide the best experience:
 
