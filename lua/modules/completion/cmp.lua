@@ -27,18 +27,18 @@ function M.config()
     local luasnip = require('luasnip')
     local icons = require('config.icons')
 
-   	local border = function(hl)
-		return {
-            { '╭',  hl },
-            { '─',  hl },
-            { '╮',  hl },
-            { '│',  hl },
-            { '╯',  hl },
-            { '─',  hl },
-            { '╰',  hl },
-            { '│',  hl },
-		}
-	end
+    local border = function(hl)
+        return {
+            { '╭', hl },
+            { '─', hl },
+            { '╮', hl },
+            { '│', hl },
+            { '╯', hl },
+            { '─', hl },
+            { '╰', hl },
+            { '│', hl },
+        }
+    end
 
     cmp.setup {
         completion = {
@@ -81,15 +81,21 @@ function M.config()
             -- go to previous placeholder in the snippet
             ['<C-b>'] = cmp.mapping(function(fallback) if luasnip.jumpable(-1) then luasnip.jump(-1) else fallback() end end),
             ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm({ select = true }),
+            ['<CR>'] = function(fallback)
+                if cmp.visible() and cmp.get_active_entry() then
+                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                else
+                    fallback()
+                end
+            end
         },
 
         sources = cmp.config.sources({
-            { name = 'nvim_lsp' },          -- LSP
+            { name = 'nvim_lsp' },                -- LSP
             { name = 'nvim_lsp_signature_help' }, -- LSP for parameters in functions
-            { name = 'nvim_lua' },          -- Lua Neovim API
-            { name = 'luasnip' },           -- Luasnip
-            { name = 'path' },              -- Paths
+            { name = 'nvim_lua' },                -- Lua Neovim API
+            { name = 'luasnip' },                 -- Luasnip
+            { name = 'path' },                    -- Paths
         }, {
             { name = 'buffer' }
         }),
@@ -101,7 +107,7 @@ function M.config()
                 -- defines how annotations are shown
                 -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
                 mode = 'symbol_text',
-                maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
                 ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
                 -- symbol map, defaults or codicons
                 -- preset = 'codicons',
@@ -117,22 +123,22 @@ function M.config()
             }
         },
 
-       	window = {
-			completion = {
-				border = border("PmenuBorder"),
-				winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
-				scrollbar = false,
-			},
-			documentation = {
-				border = border("CmpDocBorder"),
-				winhighlight = "Normal:CmpDoc",
-			},
-		},
+        window = {
+            completion = {
+                border = border("PmenuBorder"),
+                winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+                scrollbar = false,
+            },
+            documentation = {
+                border = border("CmpDocBorder"),
+                winhighlight = "Normal:CmpDoc",
+            },
+        },
 
         experimental = {
-			ghost_text = {
-				hl_group = "Whitespace",
-			},
+            ghost_text = {
+                hl_group = "Whitespace",
+            },
         }
     }
 
