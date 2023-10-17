@@ -94,6 +94,7 @@ The following tools are required for the plugins to work properly and provide th
 - [vim-repeat](https://github.com/tpope/vim-repeat): Extended usage of repeat (.) command
 - [sad](https://github.com/ray-x/sad.nvim): Search and replace
 - [unimpaired](https://github.com/tummetott/unimpaired.nvim): Pairs of useful mappings
+- [neoscroll](https://github.com/karb94/neoscroll.nvim): Smooth scrolling
 
 ## Lang
 
