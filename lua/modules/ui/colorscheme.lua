@@ -19,7 +19,8 @@ function M.config()
     local clear = {}
 
     catppuccin.setup {
-        flavor = 'macchiato',
+        --flavor = 'macchiato',
+        flavor = 'mocha',
         transparent_background = transparent_background,
         term_colors = true,
         diam_inactive = {
