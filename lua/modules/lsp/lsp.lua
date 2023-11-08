@@ -49,7 +49,7 @@ local function setup_keymaps(bufnr)
   map('n', prefix .. 'f', function() vim.lsp.buf.format { async = true } end, opts { desc = "Format document" })
   map('n', prefix .. 'l', vim.lsp.codelens.run, opts { desc = "CodeLens Action" })
   map('n', prefix .. 'q', telescope.quickfix, opts { desc = "Quickfix" })
-  map('n', prefix .. 'r', [[<Cmd>Lspsaga rename<CR>]], opts { desc = "Rename..." })
+  map('n', prefix .. 'r', [[<Cmd>Lspsaga rename ++project<CR>]], opts { desc = "Rename..." })
   map('n', prefix .. 's', telescope.lsp_document_symbols, opts { desc = "Document symbols" })
   map('n', prefix .. 'S', telescope.lsp_dynamic_workspace_symbols, opts { desc = "Workspace Symbols" })
 
