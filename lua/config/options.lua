@@ -35,6 +35,7 @@ vim.o.cursorlineopt = 'number'
 vim.o.mouse = 'a' -- Enable mouse in all modes,
 vim.o.timeout = true
 vim.o.timeoutlen = 200 -- Wait no more that 200ms for key mappings to complete, change according to your typing speed
+vim.o.completeopt = 'menu,menuone,preview,noselect'
 -- }}}
 
 -- Clipboard {{{

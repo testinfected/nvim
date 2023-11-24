@@ -44,7 +44,6 @@ function M.config()
         completion = {
             -- Disable the completion menu, you must invoke it with <c-space>
             -- autocomplete = false,
-            completeopt = 'menu,menuone,longest,preview,noinsert,noselect'
         },
 
         snippet = {
