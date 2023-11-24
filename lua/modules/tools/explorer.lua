@@ -4,35 +4,38 @@
 ]]
 
 local M = {
-    'nvim-tree/nvim-tree.lua',
-    keys = {
-        { '<leader>e', [[<Cmd>NvimTreeToggle<CR>]], desc = "File explorer" }
-    }
+	"nvim-tree/nvim-tree.lua",
+	keys = {
+		{ "<leader>e", [[<Cmd>NvimTreeToggle<CR>]], desc = "File explorer" },
+	},
 }
 
 function M.config()
-    local icons = require('config.icons')
+	local icons = require("config.icons")
 
-    require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
-        renderer = {
-            icons = {
-                glyphs = {
-                    git = {
-                        unstaged = icons.git.FileUnstaged,
-                        untracked = icons.git.FileUntracked,
-                    },
-                },
-            },
-        },
-        diagnostics = {
-            icons = {
-                hint = icons.diagnostics.Hint,
-                info = icons.diagnostics.Info,
-                warning = icons.diagnostics.Warning,
-                error = icons.diagnostics.Error,
-            },
-        },
-    }
+	require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
+		view = {
+			width = 50,
+		},
+		renderer = {
+			icons = {
+				glyphs = {
+					git = {
+						unstaged = icons.git.FileUnstaged,
+						untracked = icons.git.FileUntracked,
+					},
+				},
+			},
+		},
+		diagnostics = {
+			icons = {
+				hint = icons.diagnostics.Hint,
+				info = icons.diagnostics.Info,
+				warning = icons.diagnostics.Warning,
+				error = icons.diagnostics.Error,
+			},
+		},
+	})
 end
 
 return M

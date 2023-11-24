@@ -49,9 +49,6 @@ function M.config()
         },
         ['<leader>'] = {
             name = "+User",
-            b = {
-                name = "+Buffer",
-            },
             c = {
                 name = "+Code",
                 d = {
@@ -67,7 +64,7 @@ function M.config()
                 }
             },
             f = {
-                name = "+File",
+                name = "+Find",
             },
             g = {
                 name = "+Git",
@@ -82,17 +79,14 @@ function M.config()
             },
             h = {
                 name = "+Help",
-            },
-            k = {
-                name = "+Keymaps",
-                s = { function() vim.cmd [[WhichKey]] end, "Show", },
-                l = { function() local input = vim.fn.input "WhichKey: " vim.cmd([[WhichKey ]] .. input) end, "Lookup..." }
+                m = { function() vim.cmd [[WhichKey]] end, "Show mapping", },
+                k = { function() local input = vim.fn.input "WhichKey: " vim.cmd([[WhichKey ]] .. input) end, "Lookup key..." }
             },
             r = {
                 name = "+Run",
             },
-            s = {
-                name = "+Split",
+            w = {
+                name = "+Window",
             },
             t = {
                 name = "+Test",

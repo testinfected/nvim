@@ -11,7 +11,7 @@ local M = {
   },
   keys = {
     { '<leader>.', [[<Cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>]], desc = "Browse files" },
-    { '<leader>bb', [[<Cmd>Telescope file_browser<CR>]], desc = "Browse project" },
+    { '<leader>fb', [[<Cmd>Telescope file_browser<CR>]], desc = "Browse project" },
   },
   event = { 'VeryLazy' },
 }
@@ -22,6 +22,7 @@ function M.config()
   telescope.setup {
     extensions = {
       file_browser = {
+        initial_mode = 'normal',
         -- disables netrw and use telescope-file-browser in its place
         hijack_netrw = true,
         mappings = {

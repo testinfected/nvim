@@ -30,12 +30,12 @@ map({'n', 'i'}, '<C-s>', '<Cmd>w<CR><ESC>', { desc = "Save file", silent = true 
 map({'n', 'x'}, '&', '<Cmd>&&<CR>', { desc = "Repeat last substitution" })
 
 -- Splits
-map('n', '<leader>sv', '<C-w>v', { desc = "Vertically" })
-map('n', '<leader>s|', '<C-w>v', { desc = "Vertically" })
-map('n', '<leader>sh', '<C-w>s', { desc = "Horizontally" })
-map('n', '<leader>s-', '<C-w>s', { desc = "Horizontally" })
-map('n', '<leader>ss', '<C-w>w', { desc = "Switch" })
-map('n', '<leader>sc', '<C-w>q', { desc = "Close" })
-map('n', '<leader>s=', '<C-w>=', { desc = "Equal width" })
+map('n', '<leader>wv', '<C-w>v', { desc = "Vertically" })
+map('n', '<leader>w|', '<C-w>v', { desc = "Vertically" })
+map('n', '<leader>wh', '<C-w>s', { desc = "Horizontally" })
+map('n', '<leader>w-', '<C-w>s', { desc = "Horizontally" })
+map('n', '<leader>ww', '<C-w>w', { desc = "Switch" })
+map('n', '<leader>wq', '<C-w>q', { desc = "Close" })
+map('n', '<leader>w=', '<C-w>=', { desc = "Equal width" })
 
 -- vim:tabstop=2 shiftwidth=2 expandtab syntax=lua foldmethod=marker foldlevelstart=0 foldlevel=0
