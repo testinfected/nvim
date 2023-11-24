@@ -29,12 +29,9 @@ function M.config()
         icons = false,             -- We have already setup dap icons so don't want them overridden here
         lsp_cfg = false,           -- Use mason, then apply gopls config after setup
         lsp_keymaps = false,
-        lsp_diag_virtual_text = false, -- Set up as part of diagnostics
         dap_debug_keymap = false,  -- I have set this up already with all my other nvim-dap setup
         textobjects = false,       -- Already have textobjects set up so do not add a mapping for this
         run_in_floaterm = true,
-        -- TODO: make this a project specific setup, rather than a global setup
-        test_runner = 'ginkgo',
         trouble = true,
         lua_snip = true,
     }
