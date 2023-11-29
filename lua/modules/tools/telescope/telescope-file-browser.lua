@@ -11,7 +11,6 @@ local M = {
   },
   keys = {
     { '<leader>.', [[<Cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>]], desc = "Browse files" },
-    { '<leader>fb', [[<Cmd>Telescope file_browser<CR>]], desc = "Browse project" },
   },
   event = { 'VeryLazy' },
 }
