@@ -15,7 +15,7 @@ function M.config()
 
 	require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
 		view = {
-			width = 50,
+			width = 40,
 		},
 		renderer = {
 			icons = {
