@@ -23,20 +23,20 @@ local function setup_keymaps()
 	local builtin = require("telescope.builtin")
 
 	local map = vim.keymap.set
-	map("n", "<leader>;", builtin.buffers, { desc = "Select buffer" })
+	map("n", "<leader> ", builtin.buffers, { desc = "Select buffer" })
 	map("n", "<leader>/", builtin.live_grep, { desc = "Search everywhere" })
 	map("n", "<leader>*", builtin.grep_string, { desc = "Find word under cursor" })
 
 	-- +Find
 	map("n", "<leader>fb", function() builtin.buffers({ show_all_buffers = true }) end, { desc = "Buffer" })
 	map("n", "<leader>fc", builtin.command_history, { desc = "Recent command" })
-	map("n", "<leader>ff", builtin.find_files, { desc = "File" })
+	map("n", "<leader>ff", builtin.resume, { desc = "Resume last search" })
 	map("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
 	map("n", "<leader>fh", builtin.help_tags, { desc = "Help" })
 	map("n", "<leader>fk", builtin.keymaps, { desc = "Key" })
 	map("n", "<leader>fm", builtin.marks, { desc = "Mark" })
+	map("n", "<leader>fo", builtin.find_files, { desc = "Open File" })
 	map("n", "<leader>fr", builtin.oldfiles, { desc = "Recent file" })
-	map("n", "<leader>fs", builtin.resume, { desc = "Resume last search" })
 	map("n", "<leader>ft", builtin.current_buffer_fuzzy_find, { desc = "Text in current buffer" })
 	map("n", "<leader>fw", builtin.grep_string, { desc = "Word under cursor" })
 
