@@ -11,9 +11,6 @@ local M = {
     'nvim-tree/nvim-web-devicons',
     'catppuccin/nvim',
   },
-  keys = {
-    { '<leader>bp', [[<Cmd>BufferLineTogglePin<CR>]], desc = "Toggle pin" }
-  },
   event = { 'BufReadPre', 'BufAdd', 'BufNew', 'BufReadPost' },
 }
 
