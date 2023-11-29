@@ -36,6 +36,8 @@ function M.config()
 			},
 		},
 	})
+
+	vim.keymap.set("n", "<leader>fl", "<Cmd>NvimTreeFindFile<CR>", { desc = "Locate file in explorer" })
 end
 
 return M
