@@ -28,15 +28,15 @@ This configuration can serve as a starting point if you want to build your own p
 │  │  └── loader.lua          -- Plugin loader
 │  │
 │  ├── modules                -- Plugins organized in modules
-│  │  ├── code.lua            -- Code related plugins
-│  │  ├── completion.lua      -- Code completion plugins
-│  │  ├── debugger.lua        -- Debugger related plugins
-│  │  ├── editor.lua          -- Plugins to enhance edition experience
-│  │  ├── lang.lua            -- Programming languages specific plugins
-│  │  ├── lsp.lua             -- Language servers support
-│  │  ├── term.lua            -- Terminal plugins
-│  │  ├── tools.lua           -- Various utilities
-│  │  ├── ui.lua              -- Plugins for better user experience
+│  │  ├── code/               -- Code related plugins
+│  │  ├── completion/         -- Code completion plugins
+│  │  ├── debugger/           -- Debugger related plugins
+│  │  ├── editor/             -- Plugins to enhance edition experience
+│  │  ├── lang/               -- Programming languages specific plugins
+│  │  ├── lsp/                -- Language servers support
+│  │  ├── term/               -- Terminal plugins
+│  │  ├── tools/              -- Various utilities
+│  │  ├── ui/                 -- Plugins for better user experience
 ```
 
 # Plugins
@@ -94,7 +94,6 @@ The following tools are required for the plugins to work properly and provide th
 - [vim-repeat](https://github.com/tpope/vim-repeat): Extended usage of repeat (.) command
 - [sad](https://github.com/ray-x/sad.nvim): Search and replace
 - [unimpaired](https://github.com/tummetott/unimpaired.nvim): Pairs of useful mappings
-- [neoscroll](https://github.com/karb94/neoscroll.nvim): Smooth scrolling
 
 ## Lang
 
@@ -139,4 +138,3 @@ The following tools are required for the plugins to work properly and provide th
 - [lualine](https://github.com/nvim-lualine/lualine.nvim): Configurable statusline
 - [nvim-pqf](https://github.com/yorickpeterse/nvim-pqf): Prettier QuickFix list
 - [bufferline](https://github.com/akinsho/bufferline.nvim): Snazzy bufferline  
-- [true-zen](https://github.com/pocco81/true-zen.nvim): Distraction free coding
