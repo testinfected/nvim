@@ -41,9 +41,12 @@ function M.config()
     end
 
     cmp.setup {
+        preselect = require('cmp.types').cmp.PreselectMode.None,
+
         completion = {
             -- Disable the completion menu, you must invoke it with <c-space>
             -- autocomplete = false,
+            completeopt = table.concat(vim.opt.completeopt:get(), ",")
         },
 
         snippet = {
