@@ -23,7 +23,7 @@ function M.config()
       extend_gitsigns = true, -- extend gitsigns plugin diff action
     },
     lightbulb = {
-      virtual_text = true, -- show bulb at end of line
+      virtual_text = false, -- show bulb at end of line
       sign = false
     },
     outline = {
