@@ -5,169 +5,192 @@
 ]]
 
 local M = {
-    'hrsh7th/nvim-cmp',
-    event = { 'InsertEnter', 'CmdlineEnter' },
-    dependencies = {
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-emoji',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lsp-signature-help',
-        'hrsh7th/cmp-nvim-lua',
-        'saadparwaiz1/cmp_luasnip',
-        'L3MON4D3/LuaSnip',
-        'rafamadriz/friendly-snippets',
-    },
+	"hrsh7th/nvim-cmp",
+	event = { "InsertEnter", "CmdlineEnter" },
+	dependencies = {
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-emoji",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"hrsh7th/cmp-nvim-lua",
+		"saadparwaiz1/cmp_luasnip",
+		"L3MON4D3/LuaSnip",
+		"rafamadriz/friendly-snippets",
+	},
 }
 
 function M.config()
-    local cmp = require('cmp')
-    local lspkind = require('lspkind')
-    local luasnip = require('luasnip')
-    local icons = require('config.icons')
+	local cmp = require("cmp")
+    local types = require("cmp.types")
+	local lspkind = require("lspkind")
+	local luasnip = require("luasnip")
+	local icons = require("config.icons")
 
-    local border = function(hl)
-        return {
-            { '╭', hl },
-            { '─', hl },
-            { '╮', hl },
-            { '│', hl },
-            { '╯', hl },
-            { '─', hl },
-            { '╰', hl },
-            { '│', hl },
-        }
-    end
+	local border = function(hl)
+		return {
+			{ "╭", hl },
+			{ "─", hl },
+			{ "╮", hl },
+			{ "│", hl },
+			{ "╯", hl },
+			{ "─", hl },
+			{ "╰", hl },
+			{ "│", hl },
+		}
+	end
 
-    cmp.setup {
-        preselect = require('cmp.types').cmp.PreselectMode.None,
+	cmp.setup({
+		--preselect = types.cmp.PreselectMode.None,
 
+		completion = {
+			-- Disable the completion menu, you must invoke it with <c-space>
+			autocomplete = false,
+			completeopt = table.concat(vim.opt.completeopt:get(), ","),
+		},
+
+		snippet = {
+			expand = function(args)
+				luasnip.lsp_expand(args.body) -- Luasnip expand
+			end,
+		},
+
+		mapping = cmp.mapping.preset.insert({
+			-- Scroll text in documentation window
+			["<C-u>"] = cmp.mapping.scroll_docs(-4),
+			["<C-d>"] = cmp.mapping.scroll_docs(4),
+			-- toggle completion
+			["<C-Space>"] = cmp.mapping(function()
+				if cmp.visible() then
+					cmp.abort()
+				else
+					cmp.complete()
+				end
+			end),
+			-- Jump to the next placeholder in the snippet.
+			["<C-f>"] = cmp.mapping(function(fallback)
+				if luasnip.jumpable(1) then
+					luasnip.jump(1)
+				else
+					fallback()
+				end
+			end),
+			-- go to previous placeholder in the snippet
+			["<C-b>"] = cmp.mapping(function(fallback)
+				if luasnip.jumpable(-1) then
+					luasnip.jump(-1)
+				else
+					fallback()
+				end
+			end),
+			["<C-e>"] = cmp.mapping.abort(),
+			["<CR>"] = cmp.mapping(function(fallback)
+				if cmp.visible() and cmp.get_selected_entry() then
+					cmp.confirm()
+				else
+					fallback()
+				end
+			end),
+			["<Tab>"] = cmp.mapping(function(fallback)
+				if cmp.visible() and cmp.get_selected_entry() then
+					--cmp.confirm()
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+				else
+					fallback()
+				end
+			end),
+		}),
+
+		sources = cmp.config.sources({
+			{ name = "nvim_lsp" }, -- LSP
+			{ name = "nvim_lsp_signature_help" }, -- LSP for parameters in functions
+            { name = "nvim_lua" }, -- Lua Neovim API
+            { name = "luasnip" }, -- Luasnip
+			{ name = "path" }, -- Paths
+		}, {
+			-- { name = 'buffer' }
+		}),
+
+		formatting = {
+			fields = { "menu", "abbr", "kind" },
+
+			format = lspkind.cmp_format({
+				-- defines how annotations are shown
+				-- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
+				mode = "symbol",
+				maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+				ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+				-- symbol map, defaults or codicons
+				-- preset = 'codicons',
+
+				menu = {
+					nvim_lsp = icons.lsp.Lsp,
+					luasnip = icons.lsp.Luasnip,
+					buffer = icons.lsp.Buffer,
+					path = icons.lsp.Path,
+					nvim_lua = icons.lsp.Lua,
+					latex_symbols = icons.lsp.Latex,
+				},
+			}),
+		},
+
+		window = {
+			completion = {
+				border = border("PmenuBorder"),
+				winhighlight = "Normal:Pmenu,Search:PmenuSel",
+				--winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+				scrollbar = false,
+			},
+			documentation = {
+				border = border("CmpDocBorder"),
+				winhighlight = "Normal:CmpDoc",
+			},
+		},
+
+		experimental = {
+			ghost_text = {
+				hl_group = "Whitespace",
+			},
+		},
+	})
+
+	-- Use buffer source for `/` and `?` (don't enable `native_menu`, otherwise this won't work).
+	cmp.setup.cmdline({ "/", "?" }, {
         completion = {
-            -- Disable the completion menu, you must invoke it with <c-space>
-            -- autocomplete = false,
-            completeopt = table.concat(vim.opt.completeopt:get(), ",")
-        },
-
-        snippet = {
-            expand = function(args)
-                luasnip.lsp_expand(args.body) -- Luasnip expand
-            end
-        },
-
-        mapping = cmp.mapping.preset.insert {
-            -- Scroll text in documentation window
-            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-d>'] = cmp.mapping.scroll_docs(4),
-            -- toggle completion
-            ['<C-Space>'] = cmp.mapping(function() if cmp.visible() then cmp.abort() else cmp.complete() end end),
-            -- navigate completion entries with TAB
-            ["<Tab>"] = cmp.mapping(function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                elseif luasnip.expand_or_locally_jumpable() then
-                    luasnip.expand_or_jump()
-                else
-                    fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-                end
-            end),
-            ["<S-Tab>"] = cmp.mapping(function()
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                elseif luasnip.jumpable(-1) == 1 then
-                    luasnip.jump(-1)
-                end
-            end),
-            -- Jump to the next placeholder in the snippet.
-            ['<C-f>'] = cmp.mapping(function(fallback) if luasnip.jumpable(1) then luasnip.jump(1) else fallback() end end),
-            -- go to previous placeholder in the snippet
-            ['<C-b>'] = cmp.mapping(function(fallback) if luasnip.jumpable(-1) then luasnip.jump(-1) else fallback() end end),
-            ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = function(fallback)
-                if cmp.visible() and cmp.get_active_entry() then
-                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-                else
-                    fallback()
-                end
-            end
-        },
-
-        sources = cmp.config.sources({
-            { name = 'nvim_lsp' },                -- LSP
-            { name = 'nvim_lsp_signature_help' }, -- LSP for parameters in functions
-            { name = 'nvim_lua' },                -- Lua Neovim API
-            { name = 'luasnip' },                 -- Luasnip
-            { name = 'path' },                    -- Paths
-        }, {
-            { name = 'buffer' }
-        }),
-
-        formatting = {
-            fields = { 'abbr', 'kind', 'menu' },
-
-            format = lspkind.cmp_format {
-                -- defines how annotations are shown
-                -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-                mode = 'symbol_text',
-                maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-                ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-                -- symbol map, defaults or codicons
-                -- preset = 'codicons',
-
-                menu = {
-                    nvim_lsp = icons.lsp.Lsp,
-                    luasnip = icons.lsp.Luasnip,
-                    buffer = icons.lsp.Buffer,
-                    path = icons.lsp.Path,
-                    nvim_lua = icons.lsp.Lua,
-                    latex_symbols = icons.lsp.Latex,
-                }
+            autocomplete = {
+                types.cmp.TriggerEvent.TextChanged,
             }
         },
 
-        window = {
-            completion = {
-                border = border("PmenuBorder"),
-                winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
-                scrollbar = false,
-            },
-            documentation = {
-                border = border("CmpDocBorder"),
-                winhighlight = "Normal:CmpDoc",
-            },
+		mapping = cmp.mapping.preset.cmdline(),
+
+		sources = {
+			{ name = "buffer" },
+		},
+	})
+
+	-- Use cmdline & path source for ':' (don't enable `native_menu`, otherwise this won't work).
+	cmp.setup.cmdline(":", {
+        completion = {
+            autocomplete = {
+                types.cmp.TriggerEvent.TextChanged,
+            }
         },
+		mapping = cmp.mapping.preset.cmdline({
+			["<C-y>"] = {
+				c = cmp.mapping.close(), --avoids ghost text behavior with noice
+			},
+		}),
+		sources = cmp.config.sources({
+			{ name = "path" },
+		}, {
+			{ name = "cmdline" },
+		}),
+	})
 
-        experimental = {
-            ghost_text = {
-                hl_group = "Whitespace",
-            },
-        }
-    }
-
-    -- Use buffer source for `/` and `?` (don't enable `native_menu`, otherwise this won't work).
-    cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-            { name = 'buffer' }
-        }
-    })
-
-    -- Use cmdline & path source for ':' (don't enable `native_menu`, otherwise this won't work).
-    cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline {
-            ['<C-y>'] = {
-                c = cmp.mapping.close(), --avoids ghost text behavior with noice
-            },
-        },
-        sources = cmp.config.sources({
-            { name = 'path' }
-        }, {
-            { name = 'cmdline' }
-        }),
-    })
-
-    -- Add snippets from Friendly Snippets
-    require('luasnip/loaders/from_vscode').lazy_load()
+	-- Add snippets from Friendly Snippets
+	require("luasnip/loaders/from_vscode").lazy_load()
 end
 
 return M
