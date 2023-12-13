@@ -82,8 +82,11 @@ function M.config()
                 m = { function() vim.cmd [[WhichKey]] end, "Show mapping", },
                 k = { function() local input = vim.fn.input "WhichKey: " vim.cmd([[WhichKey ]] .. input) end, "Lookup key..." }
             },
+            o = {
+                name = "+Overseer",
+            },
             r = {
-                name = "+Run",
+                name = "+Replace",
             },
             w = {
                 name = "+Window",
@@ -94,6 +97,10 @@ function M.config()
             x = {
                 name = "+Trouble",
             },
+            ['\\'] = {
+                name = "+Multi cursors",
+            },
+
         }
     }
 end

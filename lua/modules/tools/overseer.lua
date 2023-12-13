@@ -74,7 +74,7 @@ function M.config()
     }
 
     local sidebar = require('overseer.task_list.sidebar')
-    local map, prefix = vim.keymap.set, '<leader>r'
+    local map, prefix = vim.keymap.set, '<leader>o'
     map('n', prefix .. 't', [[<Cmd>OverseerToggle!<CR>]], { desc = "Toggle task list" })
     map('n', prefix .. 'o', [[<Cmd>OverseerOpen<CR>]], { desc = "Open task list" })
     map('n', prefix .. 'c', [[<Cmd>OverseerClose<CR>]], { desc = "Close task list" })
