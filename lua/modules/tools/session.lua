@@ -10,7 +10,8 @@ local M = {
   event = 'VeryLazy',
   dependencies = {
     'nvim-telescope/telescope.nvim',
-  }
+  },
+  enabled = false,
 }
 
 function M.config()

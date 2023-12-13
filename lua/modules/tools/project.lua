@@ -13,6 +13,7 @@ local M = {
     { '<leader>,', [[<Cmd>Telescope projects<CR>]], desc = "Project" },
   },
   event = 'VeryLazy',
+  enabled = false,
 }
 
 function M.config()

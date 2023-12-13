@@ -12,8 +12,7 @@ local M = {
     'williamboman/mason-lspconfig.nvim',
     'hrsh7th/cmp-nvim-lsp',
   },
-  -- Load Mason immediately, it needs to be ready before LSP
-  lazy = false,
+  lazy = 'VeryLazy',
 }
 
 local servers = {

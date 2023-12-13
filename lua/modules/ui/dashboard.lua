@@ -7,6 +7,7 @@
 local M = {
     'goolord/alpha-nvim',
     event = 'VimEnter',
+    enabled = false,
 }
 
 local function configure(dashboard)
