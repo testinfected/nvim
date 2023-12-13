@@ -23,7 +23,7 @@ local M = {
 
 function M.config()
 	local cmp = require("cmp")
-    local types = require("cmp.types")
+	local types = require("cmp.types")
 	local lspkind = require("lspkind")
 	local luasnip = require("luasnip")
 	local icons = require("config.icons")
@@ -85,6 +85,14 @@ function M.config()
 				end
 			end),
 			["<C-e>"] = cmp.mapping.abort(),
+			["<C-y>"] = cmp.mapping(function(fallback)
+				if cmp.visible() and cmp.get_selected_entry() then
+					--cmp.confirm()
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+				else
+					fallback()
+				end
+			end),
 			["<CR>"] = cmp.mapping(function(fallback)
 				if cmp.visible() and cmp.get_selected_entry() then
 					cmp.confirm()
@@ -93,20 +101,30 @@ function M.config()
 				end
 			end),
 			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() and cmp.get_selected_entry() then
-					--cmp.confirm()
-					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+				if cmp.visible() then
+					cmp.select_next_item()
+				elseif luasnip.expand_or_locally_jumpable() then
+					luasnip.expand_or_jump()
 				else
 					fallback()
 				end
-			end),
+			end, { "i", "s" }),
+			["<S-Tab>"] = cmp.mapping(function(fallback)
+				if cmp.visible() then
+					cmp.select_prev_item()
+				elseif luasnip.jumpable(-1) then
+					luasnip.jump(-1)
+				else
+					fallback()
+				end
+			end, { "i", "s" }),
 		}),
 
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" }, -- LSP
 			{ name = "nvim_lsp_signature_help" }, -- LSP for parameters in functions
-            { name = "nvim_lua" }, -- Lua Neovim API
-            { name = "luasnip" }, -- Luasnip
+			{ name = "nvim_lua" }, -- Lua Neovim API
+			{ name = "luasnip" }, -- Luasnip
 			{ name = "path" }, -- Paths
 		}, {
 			-- { name = 'buffer' }
@@ -157,11 +175,11 @@ function M.config()
 
 	-- Use buffer source for `/` and `?` (don't enable `native_menu`, otherwise this won't work).
 	cmp.setup.cmdline({ "/", "?" }, {
-        completion = {
-            autocomplete = {
-                types.cmp.TriggerEvent.TextChanged,
-            }
-        },
+		completion = {
+			autocomplete = {
+				types.cmp.TriggerEvent.TextChanged,
+			},
+		},
 
 		mapping = cmp.mapping.preset.cmdline(),
 
@@ -172,11 +190,11 @@ function M.config()
 
 	-- Use cmdline & path source for ':' (don't enable `native_menu`, otherwise this won't work).
 	cmp.setup.cmdline(":", {
-        completion = {
-            autocomplete = {
-                types.cmp.TriggerEvent.TextChanged,
-            }
-        },
+		completion = {
+			autocomplete = {
+				types.cmp.TriggerEvent.TextChanged,
+			},
+		},
 		mapping = cmp.mapping.preset.cmdline({
 			["<C-y>"] = {
 				c = cmp.mapping.close(), --avoids ghost text behavior with noice
