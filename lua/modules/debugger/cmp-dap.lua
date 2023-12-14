@@ -10,6 +10,7 @@ local M = {
     'mfussenegger/nvim-dap',
     'hrsh7th/nvim-cmp'
   },
+  event = 'VeryLazy'
 }
 
 function M.config()

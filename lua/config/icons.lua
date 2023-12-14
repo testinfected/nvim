@@ -86,7 +86,7 @@ return {
 	},
 
     lsp = {
-        Server = ' ',
+        Server = '',
         Lsp = '󰨞',
         Lua = '',
         Latex = '',

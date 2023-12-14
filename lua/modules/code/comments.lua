@@ -7,6 +7,6 @@
 -- :help comment-nvim
 return {
   'numToStr/Comment.nvim',
-  event = { 'BufRead', 'BufNewFile' },
+  event =  'BufEnter',
   config = true
 }

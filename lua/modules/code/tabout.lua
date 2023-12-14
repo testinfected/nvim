@@ -9,7 +9,7 @@ local M = {
         'nvim-treesitter',
         'nvim-cmp' -- load completion plugin first
     },
-    event = 'BufEnter',
+    event = 'InsertEnter',
 }
 
 function M.config()

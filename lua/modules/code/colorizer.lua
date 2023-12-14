@@ -8,7 +8,8 @@ local M = {
   'NvChad/nvim-colorizer.lua',
   keys = {
     { '<leader>cc', [[<Cmd>ColorizerToggle<CR>]], desc = "Toggle color highlighting" }
-  }
+  },
+  event = 'VeryLazy'
 }
 
 function M.config()

@@ -13,6 +13,7 @@ local M = {
         'nvim-neotest/neotest-python',
         'nvim-neotest/neotest-go',
     },
+    event = 'VeryLazy'
 }
 
 function M.config()

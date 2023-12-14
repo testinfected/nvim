@@ -6,7 +6,7 @@
 
 local M = {
   'RRethy/vim-illuminate',
-  event = 'BufReadPre',
+  event = 'BufEnter',
   keys = {
     {
       '<leader>ci', [[<Cmd>IlluminateToggle<CR>]], desc = "Toggle illuminate"
