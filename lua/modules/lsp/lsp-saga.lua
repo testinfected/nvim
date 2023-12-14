@@ -28,6 +28,9 @@ function M.config()
     },
     outline = {
       win_width = 50,
+    },
+    rename = {
+        in_select = false,
     }
   }
 
