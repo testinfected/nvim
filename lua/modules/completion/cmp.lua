@@ -46,7 +46,6 @@ function M.config()
 
 		completion = {
 			-- Disable the completion menu, you must invoke it with <c-space>
-			autocomplete = false,
 			completeopt = table.concat(vim.opt.completeopt:get(), ","),
 		},
 
@@ -60,14 +59,6 @@ function M.config()
 			-- Scroll text in documentation window
 			["<C-u>"] = cmp.mapping.scroll_docs(-4),
 			["<C-d>"] = cmp.mapping.scroll_docs(4),
-			-- toggle completion
-			["<C-Space>"] = cmp.mapping(function()
-				if cmp.visible() then
-					cmp.abort()
-				else
-					cmp.complete()
-				end
-			end),
 			-- Jump to the next placeholder in the snippet.
 			["<C-f>"] = cmp.mapping(function(fallback)
 				if luasnip.jumpable(1) then
@@ -175,12 +166,6 @@ function M.config()
 
 	-- Use buffer source for `/` and `?` (don't enable `native_menu`, otherwise this won't work).
 	cmp.setup.cmdline({ "/", "?" }, {
-		completion = {
-			autocomplete = {
-				types.cmp.TriggerEvent.TextChanged,
-			},
-		},
-
 		mapping = cmp.mapping.preset.cmdline(),
 
 		sources = {
@@ -190,11 +175,6 @@ function M.config()
 
 	-- Use cmdline & path source for ':' (don't enable `native_menu`, otherwise this won't work).
 	cmp.setup.cmdline(":", {
-		completion = {
-			autocomplete = {
-				types.cmp.TriggerEvent.TextChanged,
-			},
-		},
 		mapping = cmp.mapping.preset.cmdline({
 			["<C-y>"] = {
 				c = cmp.mapping.close(), --avoids ghost text behavior with noice
