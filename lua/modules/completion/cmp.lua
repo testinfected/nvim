@@ -42,7 +42,8 @@ function M.config()
 	end
 
 	cmp.setup({
-		--preselect = types.cmp.PreselectMode.None,
+        -- make cmp ignore preselection from language servers
+		-- preselect = types.cmp.PreselectMode.None,
 
 		completion = {
 			-- Disable the completion menu, you must invoke it with <c-space>
@@ -78,8 +79,16 @@ function M.config()
 			["<C-e>"] = cmp.mapping.abort(),
 			["<C-y>"] = cmp.mapping(function(fallback)
 				if cmp.visible() and cmp.get_selected_entry() then
-					--cmp.confirm()
-					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace })
+				else
+					fallback()
+				end
+			end),
+			["<S-CR>"] = cmp.mapping(function(fallback)
+				if cmp.visible() and cmp.get_selected_entry() then
+					cmp.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+					})
 				else
 					fallback()
 				end
@@ -114,15 +123,15 @@ function M.config()
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" }, -- LSP
 			{ name = "nvim_lsp_signature_help" }, -- LSP for parameters in functions
-			{ name = "nvim_lua" }, -- Lua Neovim API
+			{ name = "buffer" },
 			{ name = "luasnip" }, -- Luasnip
-			{ name = "path" }, -- Paths
 		}, {
-			-- { name = 'buffer' }
+			-- { name = "nvim_lua" }, -- Lua Neovim API
+			{ name = "path" }, -- Paths
 		}),
 
 		formatting = {
-			fields = { "menu", "abbr", "kind" },
+			fields = { "kind", "abbr", "menu" },
 
 			format = lspkind.cmp_format({
 				-- defines how annotations are shown
@@ -147,8 +156,8 @@ function M.config()
 		window = {
 			completion = {
 				border = border("PmenuBorder"),
-				winhighlight = "Normal:Pmenu,Search:PmenuSel",
-				--winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
+				-- winhighlight = "Normal:Pmenu,Search:PmenuSel",
+				winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,Search:PmenuSel",
 				scrollbar = false,
 			},
 			documentation = {
@@ -176,14 +185,13 @@ function M.config()
 	-- Use cmdline & path source for ':' (don't enable `native_menu`, otherwise this won't work).
 	cmp.setup.cmdline(":", {
 		mapping = cmp.mapping.preset.cmdline({
-			["<C-y>"] = {
-				c = cmp.mapping.close(), --avoids ghost text behavior with noice
-			},
+			-- ["<C-y>"] = {
+			-- 	c = cmp.mapping.close(), --avoids ghost text behavior with noice
+			-- },
 		}),
 		sources = cmp.config.sources({
-			{ name = "path" },
-		}, {
 			{ name = "cmdline" },
+			{ name = "path" },
 		}),
 	})
 
