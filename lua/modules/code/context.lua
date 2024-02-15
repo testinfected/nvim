@@ -5,7 +5,8 @@
 
 local M = {
   'nvim-treesitter/nvim-treesitter-context',
-  event = 'BufEnter'
+  event = 'BufEnter',
+  enabled = false
 }
 
 function M.config()
