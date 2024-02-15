@@ -31,7 +31,8 @@ function M.config()
         lsp_keymaps = false,
         dap_debug_keymap = false,  -- I have set this up already with all my other nvim-dap setup
         textobjects = false,       -- Already have textobjects set up so do not add a mapping for this
-        run_in_floaterm = false,
+        run_in_floaterm = true,
+        test_runner = 'ginkgo',
         trouble = true,
         lua_snip = true,
     }
