@@ -68,7 +68,7 @@ function M.config()
 					["<C-h>"] = "which_key",
 				},
 			},
-			initial_mode = "insert",
+			initial_mode = "normal",
 			prompt_prefix = " " .. icons.ui.Telescope .. " ",
 			selection_caret = icons.ui.ChevronRight,
 			scroll_strategy = "limit",
