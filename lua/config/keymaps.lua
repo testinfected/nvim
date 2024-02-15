@@ -13,8 +13,6 @@ for _, arrow_key in ipairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
 	map("n", arrow_key, "<Nop>")
 end
 
--- Close buffer using <leader>q
-map({ "n", "t" }, "<leader>q", [[<Cmd>q<CR>]], { desc = "Close buffer" })
 
 -- Save using CTRL-s and exit insert mode
 map({ "n", "i" }, "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save file", silent = true })
