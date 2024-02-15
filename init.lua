@@ -1,5 +1,4 @@
 --[[
-  File: init.lua
   Description: Entry point file for neovim
 ]]
 

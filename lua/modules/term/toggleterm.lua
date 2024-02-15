@@ -1,5 +1,4 @@
 --[[
-  File: toggleterm.lua
   Description: Easily manage multiple terminal window
   See: https://github.com/akinsho/toggleterm.nvim
 ]]
