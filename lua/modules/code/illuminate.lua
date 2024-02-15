@@ -1,5 +1,4 @@
 --[[
-  File: illuminate.lua
   Description: Automatic highlighting of word under cursor
   See: https://github.com/RRethy/vim-illuminate
 ]]
@@ -11,7 +10,7 @@ local M = {
     {
       '<leader>ci', [[<Cmd>IlluminateToggle<CR>]], desc = "Toggle illuminate"
     }
-  }
+  },
 }
 
 function M.config()

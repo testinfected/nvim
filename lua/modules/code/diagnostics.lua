@@ -1,5 +1,4 @@
 --[[
-  File: trouble.lua
   Description: A pretty diagnostics, references, telescope results, quickfix and location list
   See: https://github.com/folke/trouble.nvim
 ]]

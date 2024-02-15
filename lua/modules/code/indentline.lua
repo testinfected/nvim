@@ -1,5 +1,4 @@
 --[[
-  File: indentline.lua
   Description: Indent guides for Neovim
   See: https://github.com/lukas-reineke/indent-blankline.nvim
 ]]
@@ -22,7 +21,8 @@ function M.config()
                 'help',
                 'lazy',
                 'toggleterm',
-                'NeoTree',
+                'NvimTree',
+                'Overseer',
             },
 
             buftypes = {

@@ -9,7 +9,7 @@ local M = {
 }
 
 function M.config()
-    vim.g.VM_leader = '\\'
+    vim.g.VM_leader = "\\"
 end
 
 return M
