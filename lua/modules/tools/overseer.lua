@@ -14,6 +14,7 @@ local M = {
 function M.config()
     require('overseer').setup {
         task_list = {
+            direction = "right", -- could be left, bottom or right
 
             bindings = {
                 ["?"] = "ShowHelp",
