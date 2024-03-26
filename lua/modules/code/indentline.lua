@@ -4,33 +4,32 @@
 ]]
 
 local M = {
-    'lukas-reineke/indent-blankline.nvim',
-    event = 'BufEnter',
+	"lukas-reineke/indent-blankline.nvim",
+	event = "BufEnter",
 }
 
 function M.config()
-    require('ibl').setup {
-        indent = {
-        },
-        scope = {
+	require("ibl").setup({
+		indent = {},
+		scope = {
+			enabled = false,
+		},
+		exclude = {
 
-        },
-        exclude = {
+			filetypes = {
+				"help",
+				"lazy",
+				"toggleterm",
+				"NvimTree",
+				"Overseer",
+			},
 
-            filetypes = {
-                'help',
-                'lazy',
-                'toggleterm',
-                'NvimTree',
-                'Overseer',
-            },
-
-            buftypes = {
-                'terminal',
-                'nofile',
-            },
-        },
-    }
+			buftypes = {
+				"terminal",
+				"nofile",
+			},
+		},
+	})
 end
 
 return M

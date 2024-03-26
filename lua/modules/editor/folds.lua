@@ -9,7 +9,7 @@ local M = {
   dependencies = {
     'kevinhwang91/promise-async'
   },
-  event = 'BufEnter'
+  event = 'BufEnter',
 }
 
 local show_folded_lines_count = function(virtText, lnum, endLnum, width, truncate)

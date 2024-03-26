@@ -23,7 +23,6 @@ local M = {
 
 function M.config()
 	local cmp = require("cmp")
-	local types = require("cmp.types")
 	local lspkind = require("lspkind")
 	local luasnip = require("luasnip")
 	local icons = require("config.icons")
@@ -79,23 +78,14 @@ function M.config()
 			["<C-e>"] = cmp.mapping.abort(),
 			["<C-y>"] = cmp.mapping(function(fallback)
 				if cmp.visible() and cmp.get_selected_entry() then
-					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace })
-				else
-					fallback()
-				end
-			end),
-			["<S-CR>"] = cmp.mapping(function(fallback)
-				if cmp.visible() and cmp.get_selected_entry() then
-					cmp.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
-					})
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Insert })
 				else
 					fallback()
 				end
 			end),
 			["<CR>"] = cmp.mapping(function(fallback)
 				if cmp.visible() and cmp.get_selected_entry() then
-					cmp.confirm()
+					cmp.confirm({behavior = cmp.ConfirmBehavior.Replace })
 				else
 					fallback()
 				end
@@ -121,12 +111,12 @@ function M.config()
 		}),
 
 		sources = cmp.config.sources({
-			{ name = "nvim_lsp" }, -- LSP
-			{ name = "nvim_lsp_signature_help" }, -- LSP for parameters in functions
-			{ name = "buffer" },
+			-- { name = "nvim_lsp" }, -- LSP
+			-- { name = "nvim_lsp_signature_help" }, -- LSP for parameters in functions
 			{ name = "luasnip" }, -- Luasnip
 		}, {
 			-- { name = "nvim_lua" }, -- Lua Neovim API
+			{ name = "buffer" },
 			{ name = "path" }, -- Paths
 		}),
 
@@ -166,11 +156,11 @@ function M.config()
 			},
 		},
 
-		experimental = {
-			ghost_text = {
-				hl_group = "Whitespace",
-			},
-		},
+		-- experimental = {
+		-- 	ghost_text = {
+		-- 		hl_group = "Whitespace",
+		-- 	},
+		-- },
 	})
 
 	-- Use buffer source for `/` and `?` (don't enable `native_menu`, otherwise this won't work).
@@ -191,8 +181,9 @@ function M.config()
 		}),
 		sources = cmp.config.sources({
 			{ name = "cmdline" },
+		}, {
 			{ name = "path" },
-		}),
+        }),
 	})
 
 	-- Add snippets from Friendly Snippets
