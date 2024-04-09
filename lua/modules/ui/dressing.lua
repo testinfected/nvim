@@ -56,7 +56,7 @@ function M.config()
       },
     },
     select = {
-      backend = { 'builtin', 'nui' },
+      backend = { 'telescope', 'builtin', 'nui' },
 
       -- Trim trailing `:` from prompt
       trim_prompt = true,
