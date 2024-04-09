@@ -127,5 +127,6 @@ return {
         VerticalDottedLine = '',
         VerticalDottedLineThick = '󰇙',
         Telescope = "",
+        Checkmark = '󰸞',
     }
 }

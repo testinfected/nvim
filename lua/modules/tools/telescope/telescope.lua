@@ -1,5 +1,4 @@
 --[[
-  File: telescope.lua
   Description: Fuzzy finder over lists
   See: https://github.com/nvim-telescope/telescope.nvim
 ]]
@@ -69,7 +68,8 @@ function M.config()
 				},
 			},
 			prompt_prefix = " " .. icons.ui.Telescope .. " ",
-			selection_caret = icons.ui.ChevronRight,
+			selection_caret = icons.ui.ChevronRight .. " ",
+            multi_icon = icons.ui.Checkmark,
 			scroll_strategy = "limit",
 			results_title = false,
 			layout_strategy = "horizontal",
