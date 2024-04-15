@@ -113,8 +113,8 @@ function M.config()
 		-- which return a single function, which is responsible for loading and
 		-- initializing the extension.
 		extensions = {
-			nvim_tree = true,
-			smart_splits = false,
+			nvim_tree = false,
+			smart_splits = true,
 			op_nvim = false,
 			diffview = false,
 			lazy_nvim = {
