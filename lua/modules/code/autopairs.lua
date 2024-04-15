@@ -6,7 +6,8 @@
 
 local M = {
   'windwp/nvim-autopairs',
-  event = 'InsertEnter',
+  -- don't load on InsertEnter event to avoid conflicts with multi-cursors
+  event = 'VeryLazy',
   dependencies = {
     'hrsh7th/nvim-cmp'
   }

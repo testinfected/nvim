@@ -19,11 +19,23 @@ local M = {
 
 function M.config()
 	require("multiple-cursors").setup({
+		-- nvim-autopairs plugin needs to be disabled while using multiple cursors:
+		opts = {
+			pre_hook = function()
+				require("nvim-autopairs").disable()
+			end,
+
+			post_hook = function()
+				require("nvim-autopairs").enable()
+			end,
+		},
 
 		custom_key_maps = {
+			-- For normal mode count must be set before nvim-spider's motion function is called:
 			-- w
 			{
-				{ "n", "x" }, "w",
+				{ "n", "x" },
+				"w",
 				function(_, count)
 					if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
 						vim.cmd("normal! " .. count)
@@ -34,7 +46,8 @@ function M.config()
 
 			-- e
 			{
-				{ "n", "x" }, "e",
+				{ "n", "x" },
+				"e",
 				function(_, count)
 					if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
 						vim.cmd("normal! " .. count)
@@ -45,7 +58,8 @@ function M.config()
 
 			-- b
 			{
-				{ "n", "x" }, "b",
+				{ "n", "x" },
+				"b",
 				function(_, count)
 					if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
 						vim.cmd("normal! " .. count)
