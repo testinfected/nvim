@@ -1,5 +1,4 @@
 --[[
-  File: ufo.lua
   Description: Modern looking folds
   See: https://github.com/kevinhwang91/nvim-ufo
 ]]
