@@ -36,7 +36,7 @@ function M.config()
     },
     lsp = {
         progress = {
-            enabled = true,
+            enabled = false,
             view = 'mini',
         },
         override = {
