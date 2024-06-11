@@ -5,7 +5,7 @@ See: https://github.com/ggandor/leap-spooky.nvim
 
 local M = {
     'ggandor/leap-spooky.nvim',
-    requires = {
+    dependencies = {
          'ggandor/leap.nvim'
     },
     event = 'BufEnter'

@@ -35,12 +35,12 @@ end
 function M.config()
   require('trouble').setup()
 
-  local telescope = require('trouble.providers.telescope')
+  local telescope = require('trouble.sources.telescope')
   require('telescope').setup {
     defaults = {
       mappings = {
-        i = { ['<c-t>'] = telescope.open_with_trouble },
-        n = { ['<c-t>'] = telescope.open_with_trouble },
+        i = { ['<c-t>'] = telescope.open },
+        n = { ['<c-t>'] = telescope.open },
       },
     },
   }
