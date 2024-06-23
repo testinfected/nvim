@@ -18,6 +18,7 @@ local M = {
 		"saadparwaiz1/cmp_luasnip",
 		"L3MON4D3/LuaSnip",
 		"rafamadriz/friendly-snippets",
+        "onsails/lspkind.nvim",
 	},
 }
 
@@ -127,6 +128,9 @@ function M.config()
 				-- defines how annotations are shown
 				-- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
 				mode = "symbol",
+                preset = "default",
+				symbol_map = icons.kind,
+
 				maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
 				ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 				-- symbol map, defaults or codicons
