@@ -5,22 +5,22 @@
 ]]
 
 local M = {
-  'jay-babu/mason-nvim-dap.nvim',
-  dependencies = {
-    'williamboman/mason.nvim',
-    'mfussenegger/nvim-dap',
-  },
-  event = 'VeryLazy',
-  cmd = { 'DapInstall', 'DapUninstall' },
+    "jay-babu/mason-nvim-dap.nvim",
+    dependencies = {
+        "williamboman/mason.nvim",
+        "mfussenegger/nvim-dap",
+    },
+    event = "LspAttach",
+    cmd = { "DapInstall", "DapUninstall" },
 }
 
 function M.config()
-  require('mason-nvim-dap').setup {
-    ensure_installed = {
-      'python',
-      'delve'
-    }
-  }
+    require("mason-nvim-dap").setup({
+        ensure_installed = {
+            "python",
+            "delve",
+        },
+    })
 end
 
 return M

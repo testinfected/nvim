@@ -5,7 +5,6 @@
 ]]
 
 return {
-  'tpope/vim-abolish',
-  event = 'BufEnter'
+    "tpope/vim-abolish",
+    event = "CmdlineEnter",
 }
-

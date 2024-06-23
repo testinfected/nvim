@@ -5,7 +5,7 @@
 ]]
 
 return {
-  'cpea2506/relative-toggle.nvim',
-  event = { 'BufEnter' },
-  config = true
+    "cpea2506/relative-toggle.nvim",
+    event = { "VeryLazy" },
+    config = true,
 }

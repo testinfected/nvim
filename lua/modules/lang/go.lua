@@ -30,7 +30,7 @@ function M.config()
 		run_in_floaterm = true,
 		test_runner = "ginkgo",
 		trouble = true,
-		lua_snip = true,
+		luasnip = true,
 		lsp_inlay_hints = {
 			enable = true,
 			-- whether to show variable name before type hints with the inlay hints or not

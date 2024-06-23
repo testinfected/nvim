@@ -6,7 +6,7 @@
 
 -- :help comment-nvim
 return {
-  'numToStr/Comment.nvim',
-  event =  'BufEnter',
-  config = true
+    "numToStr/Comment.nvim",
+    event = "VeryLazy",
+    config = true,
 }

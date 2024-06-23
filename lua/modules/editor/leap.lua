@@ -4,12 +4,12 @@
 ]]
 
 local M = {
-    'ggandor/leap.nvim',
-    event = 'BufEnter'
+    "ggandor/leap.nvim",
+    event = "VeryLazy",
 }
 
 function M.config()
-    require('leap').add_default_mappings()
+    require("leap").add_default_mappings()
 
     -- Avoid conflicts with vim-surround
     vim.g["surround_no_mappings"] = 1
