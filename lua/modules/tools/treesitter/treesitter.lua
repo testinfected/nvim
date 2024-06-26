@@ -27,6 +27,7 @@ local parsers = {
 	"rust",
 	"typescript",
 	"vim",
+	"vimdoc",
 }
 
 function M.config()
