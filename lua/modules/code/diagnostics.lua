@@ -9,6 +9,33 @@ local M = {
         "nvim-tree/nvim-web-devicons",
     },
     event = "VeryLazy",
+  keys = {
+    {
+      "<leader>xw",
+      "<cmd>Trouble diagnostics open<cr>",
+      desc = "Workspace diagnostics",
+    },
+    {
+      "<leader>xj",
+      "<cmd>Trouble diagnostics focus<cr>",
+      desc = "Jump to diagnostics",
+    },
+    {
+      "<leader>xd",
+      "<cmd>Trouble diagnostics open filter.buf=0<cr>",
+      desc = "Document Diagnostics",
+    },
+    {
+      "<leader>xl",
+      "<cmd>Trouble loclist toggle<cr>",
+      desc = "Locations",
+    },
+    {
+      "<leader>xq",
+      "<cmd>Trouble qflist toggle<cr>",
+      desc = "Quickfix",
+    },
+  },
 }
 
 local function set_sign_icons(opts)
@@ -44,27 +71,6 @@ function M.config()
             },
         },
     })
-
-    -- Keymaps
-    local trouble = require("trouble")
-
-    local map, prefix = vim.keymap.set, "<leader>x"
-    map("n", prefix .. "x", trouble.open, { desc = "Open" })
-    map("n", prefix .. "w", function()
-        trouble.open("workspace_diagnostics")
-    end, { desc = "Workspace diagnostics" })
-    map("n", prefix .. "d", function()
-        trouble.open("document_diagnostics")
-    end, { desc = "Document diagnostics" })
-    map("n", prefix .. "q", function()
-        trouble.open("quickfix")
-    end, { desc = "Quickfix" })
-    map("n", prefix .. "l", function()
-        trouble.open("loclist")
-    end, { desc = "Locations" })
-    map("n", prefix .. "r", function()
-        trouble.open("lsp_references")
-    end, { desc = "References" })
 
     -- Custom sign icons
     local icons = require("config.icons")
