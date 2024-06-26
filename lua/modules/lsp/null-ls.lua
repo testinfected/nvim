@@ -1,17 +1,16 @@
 --[[
-  File: null-ls.lua
   Description: Use Neovim as a language server to inject LSP diagnostics, code actions, and more
   See: https://github.com/jose-elias-alvarez/null-ls.nvim
 ]]
 
 local M = {
     "jay-babu/mason-null-ls.nvim",
-    event = { "VeryLazy" },
     dependencies = {
         "williamboman/mason.nvim",
         "jose-elias-alvarez/null-ls.nvim",
         "nvim-lua/plenary.nvim",
     },
+    event = { "VeryLazy" },
 }
 
 function M.config()
