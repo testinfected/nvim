@@ -12,7 +12,7 @@ local M = {
 	},
 	branch = "regexp",
 	keys = {
-		{ "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select virtual environment" },
+		{ "<leader>cv", "<cmd>VenvSelect<cr>", desc = "Select virtual environment" },
 	},
 }
 
