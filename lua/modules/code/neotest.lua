@@ -12,7 +12,7 @@ local M = {
         "antoinemadec/FixCursorHold.nvim",
         "nvim-neotest/nvim-nio",
         "nvim-neotest/neotest-python",
-        "nvim-neotest/neotest-go",
+        "fredrikaverpil/neotest-golang",
     },
     event = "LspAttach",
 }
@@ -33,11 +33,9 @@ function M.config()
     neotest.setup({
         adapters = {
             require("neotest-python"),
-            require("neotest-go")({
-                experimental = {
-                    test_table = true,
-                },
-            }),
+            require("neotest-golang")(
+                { dap_go_enabled = true }
+            ),
         },
         quickfix = {
             open = function()
@@ -52,23 +50,23 @@ function M.config()
         neotest.run.run()
     end, { desc = "Run nearest" })
     map("n", prefix .. "d", function()
-        neotest.run.run({ strategy = "dap" })
+        neotest.run.run({ suite = false, strategy = "dap" })
     end, { desc = "Debug nearest" })
     map("n", prefix .. "t", function()
         neotest.run.run(vim.fn.expand("%"))
     end, { desc = "Run File" })
     map("n", prefix .. "a", function()
         neotest.run.run(vim.loop.cwd())
-    end, { desc = "Run All Test Files" })
+    end, { desc = "Run all tiles" })
     map("n", prefix .. "s", function()
         neotest.summary.toggle()
-    end, { desc = "Toggle Summary" })
+    end, { desc = "Toggle summary" })
     map("n", prefix .. "o", function()
         neotest.output.open({ enter = true, auto_close = true })
-    end, { desc = "Show Output" })
+    end, { desc = "Show output" })
     map("n", prefix .. "O", function()
         neotest.output_panel.toggle()
-    end, { desc = "Toggle Output Panel" })
+    end, { desc = "Toggle output panel" })
     map("n", prefix .. "S", function()
         neotest.run.stop()
     end, { desc = "Stop" })
