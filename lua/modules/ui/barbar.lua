@@ -1,7 +1,7 @@
 local M = {
     "romgrk/barbar.nvim",
     dependencies = {
-        "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+        "lewis6991/gitsigns.nvim",     -- OPTIONAL: for git status
         "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
     },
     event = { "VimEnter" },
@@ -37,7 +37,7 @@ function M.config()
 
             -- Configure the icons on the bufferline when modified or pinned.
             -- Supports all the base icon options.
-            modified = { button = icons.file.New },
+            modified = { button = icons.file.Modified },
             pinned = { button = icons.file.Pinned, filename = true },
         },
         -- Set the filetypes which barbar will offset itself for
