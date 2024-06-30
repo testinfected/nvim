@@ -10,17 +10,24 @@ local M = {
 
 function M.config()
     require("ibl").setup({
-        indent = {},
+        indent = {
+            char = { '', '┊', '┆', '¦', '|', '¦', '┆', '┊', '' },
+        },
+        whitespace = {
+            remove_blankline_trail = true,
+        },
         scope = {
-            enabled = false,
+            enabled = true,
+            char = '┃',
+            show_start = true,
         },
         exclude = {
-
             filetypes = {
                 "help",
                 "lazy",
                 "toggleterm",
                 "NvimTree",
+                "guihua",
                 "Overseer",
             },
 
