@@ -4,6 +4,7 @@
 ]]
 local M = {
     "brenton-leighton/multiple-cursors.nvim",
+    version = "*",
     keys = {
         {
             "<C-j>",
@@ -17,7 +18,6 @@ local M = {
             mode = { "n", "x" },
             desc = "Add cursor and move up",
         },
-
         {
             "<C-Up>",
             "<Cmd>MultipleCursorsAddUp<CR>",
@@ -36,46 +36,50 @@ local M = {
             mode = { "n", "i" },
             desc = "Add or remove cursor",
         },
-
         {
             "<leader>ma",
             "<Cmd>MultipleCursorsAddMatches<CR>",
             mode = { "n", "x" },
-            desc = "Add cursors to next word",
+            desc = "Add cursors to matching words",
         },
         {
             "<leader>mA",
             "<Cmd>MultipleCursorsAddMatchesV<CR>",
             mode = { "n", "x" },
-            desc = "Add cursors to current word in previous area",
+            desc = "Add cursors in last selection",
         },
-
         {
             "<Leader>md",
             "<Cmd>MultipleCursorsAddJumpNextMatch<CR>",
             mode = { "n", "x" },
-            desc = "Add cursor and jump to next word",
+            desc = "Add cursor and jump to next match",
         },
         {
             "<leader>mD",
             "<Cmd>MultipleCursorsJumpNextMatch<CR>",
             mode = { "n", "x" },
-            desc = "Jump to next word under cursor",
+            desc = "Jump to next match",
         },
-
         {
-            "<Leader>ml",
+            "<leader>ml",
             "<Cmd>MultipleCursorsLock<CR>",
             mode = { "n", "x" },
             desc = "Lock virtual cursors",
         },
-    },
+        {
+            "<leader>m|",
+            function() require("multiple-cursors").align() end,
+            mode = { "n" },
+            desc = "Align cursors vertically"
+        },
+    }
 }
 
 function M.config()
     require("multiple-cursors").setup({
         -- nvim-autopairs plugin needs to be disabled while using multiple cursors:
         opts = {
+            match_visible_only = false, -- match entire buffer
             pre_hook = function()
                 require("nvim-autopairs").disable()
             end,
