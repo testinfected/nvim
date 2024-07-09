@@ -14,6 +14,15 @@ function M.config()
         mason = true,
         lsp_signature_help = true,
         default_mapping = false,
+        lsp = {
+            enable = true,
+            code_action = { enable = true, sign = true, sign_priority = 40, virtual_text = true },
+            code_lens_action = { enable = true, sign = true, sign_priority = 40, virtual_text = true },
+            document_highlight = true, -- LSP reference highlight,
+            format_on_save = true,
+            format_options = { async = true },
+            disable_format_cap = {}, -- a list of lsp disable format capacity (e.g. if you using efm or vim-codeformat etc), empty {} by default
+        },
         icons = {
             -- Code Action (gutter, floating window)
             code_action_icon = icons.diagnostics.Action .. " ",
@@ -162,18 +171,7 @@ function M.config()
             },
             {
                 key = "<leader>cf",
-                -- require("navigator.formatting").range_format is currently broken
-                -- see https://github.com/ray-x/navigator.lua/issues/309
-                func = function()
-                    local old_func = vim.go.operatorfunc
-                    _G.op_func_formatting = function()
-                      vim.lsp.buf.format()
-                      vim.go.operatorfunc = old_func
-                      _G.op_func_formatting = nil
-                    end
-                    vim.go.operatorfunc = 'v:lua.op_func_formatting'
-                    vim.api.nvim_feedkeys('g@', 'n', false)
-                  end,
+                func = require("navigator.formatting").range_format,
                 mode = "v",
                 desc = "Format selected",
             },
