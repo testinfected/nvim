@@ -7,7 +7,8 @@ local M = {
     "ray-x/go.nvim",
     dependencies = {
         "ray-x/guihua.lua",
-        "neovim/nvim-lspconfig",
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
     },
     ft = { "go", "gomod" },
     build = [[:lua require('go.install').update_all_sync()]], -- if you need to install/update all binaries
@@ -60,10 +61,11 @@ function M.config()
     require("go.lsp").setup()
 
     vim.api.nvim_create_autocmd('FileType', {
-        pattern = {'go'},
+        pattern = { 'go' },
         desc = "Go test key bindings",
         callback = function()
             vim.keymap.set("n", "<leader>tt", "[[<cmd>GoTestFile<cr>]]", { desc = "Run for current file" })
+            vim.keymap.set("n", "<leader>tc", "[[<cmd>GoTermClose<cr>]]", { desc = "Close output" })
         end
     })
 end
