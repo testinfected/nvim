@@ -45,7 +45,7 @@ function M.config()
 
     vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
     vim.o.foldcolumn = "1" -- fold column with, 0 will hide it
-    vim.o.foldlevel = 99 -- start with all folds opened
+    vim.o.foldlevel = 99   -- start with all folds opened
     vim.o.foldenable = true
     vim.o.foldmethod = "expr"
     vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"

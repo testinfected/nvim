@@ -16,7 +16,7 @@ local M = {
 function M.config()
     local icons = require("config.icons")
 
-    require("nvim-tree").setup({ -- BEGIN_DEFAULT_OPTS
+    require("nvim-tree").setup({
         view = {
             width = 40,
         },

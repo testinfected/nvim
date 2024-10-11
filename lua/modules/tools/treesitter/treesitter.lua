@@ -9,7 +9,8 @@ local M = {
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
     build = [[:TSUpdate]],
-    event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
+    -- event = { "BufReadPost", "BufNewFile" },
 }
 
 local parsers = {

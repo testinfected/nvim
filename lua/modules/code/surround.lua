@@ -3,8 +3,15 @@
   See: https://github.com/kylechui/nvim-surround
 ]]
 
-return {
-  'kylechui/nvim-surround',
-  event = 'InsertEnter',
-  config = true
+local M = {
+    'kylechui/nvim-surround',
+    event = 'VeryLazy',
 }
+
+M.config = function()
+    require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+    })
+end
+
+return M
