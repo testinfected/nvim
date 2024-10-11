@@ -13,6 +13,10 @@ function M.config()
     require("navigator").setup({
         mason = true,
         lsp_signature_help = true,
+        signature_help_cfg = {
+            hint_prefix = icons.diagnostics.Hint, -- Panda for parameter, NOTE: for the terminal not support emoji, might crash
+            transparency = 100,                   -- disabled by default, allow floating win transparent value 1~100
+        },
         default_mapping = false,
         lsp = {
             enable = true,
@@ -28,7 +32,7 @@ function M.config()
             code_action_icon = icons.diagnostics.Action .. " ",
 
             -- Code Lens (gutter, floating window)
-            code_lens_action_icon = "👓",
+            code_lens_action_icon = icons.diagnostics.Lens .. " ",
 
             -- Diagnostics (gutter)
             -- diagnostic_head = icons.diagnostics.Diagnostic, -- prefix for other diagnostic_* icons
@@ -64,7 +68,7 @@ function M.config()
                 tab = "󰌒",
             },
             fold = {
-                prefix = "⚡",
+                prefi = "⚡",
                 separator = "",
             },
 
@@ -96,61 +100,36 @@ function M.config()
                 desc = "Definition",
             },
             {
-                key = "<leader>nd",
-                func = require("navigator.definition").definition,
-                desc = "Definition",
-            },
-            {
                 key = "gr",
                 func = require("navigator.reference").async_ref,
                 desc = "Reference",
             },
             {
-                key = "<leader>nr",
-                func = require("navigator.reference").async_ref,
-                desc = "Reference",
+                key = "gs",
+                func = vim.lsp.buf.signature_help,
+                desc = "Signature",
             },
             {
-                key = "<leader>nt",
-                func = vim.lsp.buf.type_definition,
-                desc = "Type Definition",
-            },
-            {
-                key = "<leader>ni",
-                func = vim.lsp.buf.incoming_calls,
-                desc = "Incoming Calls",
-            },
-            {
-                key = "<leader>no",
-                func = vim.lsp.buf.outgoing_calls,
-                desc = "Outgoing Calls",
-            },
-            {
-                key = "<leader>ns",
+                key = "g0",
                 func = require("navigator.symbols").document_symbols,
                 desc = "Document Symbols",
             },
             {
-                key = "<leader>nw",
-                func = require("navigator.workspace").workspace_symbol_live,
-                desc = "Workspace Symbols",
-            },
-            {
-                key = "<leader>nb",
-                func = vim.lsp.buf.implementation,
-                desc = "Implementation",
-            },
-            {
                 key = "<leader>ca",
-                mode = "n",
+                mode = { "n", "v" },
                 func = require("navigator.codeAction").code_action,
                 desc = "Action",
             },
             {
-                key = "<leader>ca",
+                key = "<leader>cd",
+                func = require("navigator.definition").definition_preview,
+                desc = "Preview definition",
+            },
+            {
+                key = "<leader>cf",
+                func = require("navigator.formatting").range_format,
                 mode = "v",
-                func = require("navigator.codeAction").range_code_action,
-                desc = "Ranged action",
+                desc = "Format selected",
             },
             {
                 key = "<leader>ch",
@@ -165,25 +144,9 @@ function M.config()
             },
             {
                 key = "<leader>cf",
-                func = require("navigator.formatting").format_hdl,
+                func = vim.lsp.buf.format,
                 mode = "n",
                 desc = "Format",
-            },
-            {
-                key = "<leader>cf",
-                func = require("navigator.formatting").range_format,
-                mode = "v",
-                desc = "Format selected",
-            },
-            {
-                key = "<leader>cd",
-                func = require("navigator.definition").definition_preview,
-                desc = "Preview definition",
-            },
-            {
-                key = "<leader>ct",
-                func = require("navigator.definition").type_definition_preview,
-                desc = "Preview type definition",
             },
             {
                 key = "<leader>cr",
@@ -191,9 +154,19 @@ function M.config()
                 desc = "Rename",
             },
             {
-                key = "<leader>ns",
-                func = vim.lsp.buf.signature_help,
-                desc = "Signature",
+                key = "<leader>cs",
+                func = require("navigator.symbols").document_symbols,
+                desc = "Document Symbols",
+            },
+            {
+                key = "<leader>ct",
+                func = require("navigator.definition").type_definition_preview,
+                desc = "Preview type definition",
+            },
+            {
+                key = "<leader>cw",
+                func = require("navigator.workspace").workspace_symbol_live,
+                desc = "Workspace Symbols",
             },
             -- Diagnostics
             {
@@ -210,6 +183,37 @@ function M.config()
                 key = "<leader>cdt",
                 func = require("navigator.diagnostics").toggle_diagnostics,
                 desc = "Toggle",
+            },
+            -- Code Navigation
+            {
+                key = "<leader>nb",
+                func = vim.lsp.buf.implementation,
+                desc = "Implementation",
+            },
+            {
+                key = "<leader>nd",
+                func = require("navigator.definition").definition,
+                desc = "Definition",
+            },
+            {
+                key = "<leader>ni",
+                func = vim.lsp.buf.incoming_calls,
+                desc = "Incoming Calls",
+            },
+            {
+                key = "<leader>no",
+                func = vim.lsp.buf.outgoing_calls,
+                desc = "Outgoing Calls",
+            },
+            {
+                key = "<leader>nr",
+                func = require("navigator.reference").async_ref,
+                desc = "Reference",
+            },
+            {
+                key = "<leader>nt",
+                func = vim.lsp.buf.type_definition,
+                desc = "Type Definition",
             },
             {
                 key = "]d",

@@ -111,6 +111,7 @@ return {
         Info = "",
         Hint = "󰌶",
         Action = "󰙈",
+        Lens = '󰧶'
     },
     ui = {
         ChevronRight = "",
