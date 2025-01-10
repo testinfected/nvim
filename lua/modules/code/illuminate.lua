@@ -13,6 +13,7 @@ local M = {
             desc = "Toggle illuminate",
         },
     },
+    enabled = false,
 }
 
 function M.config()

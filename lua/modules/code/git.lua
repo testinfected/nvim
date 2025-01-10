@@ -61,9 +61,10 @@ function M.config()
             map('n', prefix .. 'p', git.preview_hunk, opts { desc = "Preview hunk" })
             map('n', prefix .. 'd', git.diffthis, opts { desc = "View diff" })
             map('n', prefix .. 'd', function() git.diffthis('~') end, opts { desc = "View diff to head" })
-            map('n', prefix .. 'b', git.blame_line, opts { desc = "Blame" })
-            map('n', prefix .. 'B', function() git.blame_line { full = true } end, opts { desc = "Full blame" })
-            map('n', prefix .. 'h', telescope.git_bcommits, opts { desc = "File history" })
+            -- Snacks handle that part
+            -- map('n', prefix .. 'b', git.blame_line, opts { desc = "Blame" })
+            -- map('n', prefix .. 'B', function() git.blame_line { full = true } end, opts { desc = "Full blame" })
+            -- map('n', prefix .. 'h', telescope.git_bcommits, opts { desc = "File history" })
             -- +show
             map('n', prefix .. 'gc', telescope.git_commits, { buffer = bufnr, desc = "Commits" })
             map('n', prefix .. 'gb', telescope.git_branches, { buffer = bufnr, desc = "Branches" })

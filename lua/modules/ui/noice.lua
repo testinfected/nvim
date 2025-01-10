@@ -21,7 +21,8 @@ function M.config()
         },
         messages = {
             -- NOTE: If you enable messages, then the cmdline is enabled automatically.
-            enabled = false, -- enable Noice messages UI
+            enabled = true, -- enable Noice messages UI
+            view = "mini",
         },
         popupmenu = {
             enabled = true,                            -- enable Noice popupmenu UI
@@ -31,12 +32,13 @@ function M.config()
             kind_icons = require('config.icons').kind, -- set to `false` to disable icons
         },
         notify = {
-            -- Turn off noice as `vim.notify`
-            enabled = false,
+            -- Use noice as `vim.notify`
+            enabled = true,
+            view = "snacks",
         },
         lsp = {
             progress = {
-                enabled = false,
+                enabled = true,
                 view = 'mini',
             },
             override = {

@@ -24,11 +24,11 @@ function M.config()
         transparent_background = transparent_background,
         term_colors = true,
         diam_inactive = {
-            enabled = false, -- dims the background color of inactive window
+            enabled = false,         -- dims the background color of inactive window
             shade = "dark",
-            percentage = 0.15, -- percentage of the shade to apply to the inactive window
+            percentage = 0.15,       -- percentage of the shade to apply to the inactive window
         },
-        styles = {          -- Handles the styles of general hi groups (see `:h highlight-args`):
+        styles = {                   -- Handles the styles of general hi groups (see `:h highlight-args`):
             comments = { "italic" }, -- Change the style of comments
             conditionals = { "italic" },
             loops = {},
@@ -118,7 +118,7 @@ function M.config()
                 enabled = true,
                 enable_ui = true, -- enable nvim-dap-ui
             },
-            fidget = true,
+            dap_ui = true,
             gitsigns = true,
             illuminate = {
                 enabled = true,
@@ -132,6 +132,10 @@ function M.config()
             lsp_trouble = true,
             markdown = true,
             mason = true,
+            mini = {
+                enabled = true,
+                indentscope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+            },
             native_lsp = {
                 enabled = true,
                 virtual_text = {
@@ -152,9 +156,11 @@ function M.config()
             },
             neotest = true,
             noice = true,
+            nvim_surround = true,
             nvimtree = true,
             overseer = true,
             rainbow_delimiters = true,
+            snacks = true,
             telescope = {
                 enabled = true,
                 style = "nvchad",
