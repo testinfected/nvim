@@ -7,4 +7,5 @@
 return {
     "tpope/vim-abolish",
     event = "CmdlineEnter",
+    enabled = false,
 }

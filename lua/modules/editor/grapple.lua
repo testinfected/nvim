@@ -16,6 +16,7 @@ local M = {
         { "<leader>wk", "<cmd>Grapple cycle_tags next<cr>", desc = "Next tagged" },
         { "<leader>wj", "<cmd>Grapple cycle_tags prev<cr>", desc = "Previous tagged" },
     },
+    enabled = false,
 }
 
 function M.config()
