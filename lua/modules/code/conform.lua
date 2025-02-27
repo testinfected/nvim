@@ -21,6 +21,7 @@ local M = {
 function M.config()
     require("conform").setup({
         formatters_by_ft = {
+            cue = { "cue_fmt" },
             lua = { "stylua" },
             -- Conform will run multiple formatters sequentially
             python = { "isort", "black" },
