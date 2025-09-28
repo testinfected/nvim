@@ -14,6 +14,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 vim.keymap.set({ "n", "v" }, "<leader>", "<Nop>", { silent = true })
 
+-- GUI {{{
+vim.o.guicursor = "" -- use block cursor for all modes
+---}}},
+
 -- Buffers {{{
 vim.o.autoread = true  -- reload file if changed outside nvim
 vim.o.autowrite = true -- autowrite file
@@ -71,6 +75,8 @@ vim.o.previewheight = 12
 -- Do NOT adjust the following option (pumblend) if you're using transparent background
 vim.o.pumblend = 0
 vim.o.pumheight = 15
+-- todo remove settings of winborder in modules, since does it on neovim 0.11+
+vim.o.winborder = "rounded"
 vim.o.winblend = 0
 vim.o.winminwidth = 20
 vim.o.winwidth = 30
