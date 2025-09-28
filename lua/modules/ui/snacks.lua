@@ -12,7 +12,7 @@ return {
 		bigfile = { enabled = true },
 		dim = {},
 		indent = {},
-		input = { enabled = true },
+		input = { enabled = false },
 		notifier = { enabled = true, timeout = 3000 },
 		quickfile = { enabled = true },
 		scroll = { enabled = true },

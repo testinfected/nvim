@@ -3,7 +3,7 @@
   See: https://github.com/linux-cultist/venv-selector.nvim
 ]]
 
-local M = {
+return {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
         "neovim/nvim-lspconfig",
@@ -16,14 +16,11 @@ local M = {
         { "<leader>cv", "<cmd>VenvSelect<cr>", desc = "Select virtual environment" },
     },
     enabled = false,
+    config = function()
+        require("venv-selector").setup({
+            name = { "venv", ".venv" },
+            dap_enabled = true,
+            pyenv_path = vim.fn.expand("$HOME/.pyenv/versions"),
+        })
+    end,
 }
-
-function M.config()
-    require("venv-selector").setup({
-        name = { "venv", ".venv" },
-        dap_enabled = true,
-        pyenv_path = vim.fn.expand("$HOME/.pyenv/versions"),
-    })
-end
-
-return M

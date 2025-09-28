@@ -1,19 +1,15 @@
 --[[
-  File: range-highlight.lua
-  Description: Hightlight ranges entered in commandline
+  Description: Highlight ranges entered in command line
   See: https://github.com/rktjmp/winston0410/range-highlight.nvim
 ]]
 
-local M = {
-  'winston0410/range-highlight.nvim',
-  dependencies = {
-    'winston0410/cmd-parser.nvim',
-  },
-  event = 'CmdlineEnter'
+return {
+    "winston0410/range-highlight.nvim",
+    dependencies = {
+        "winston0410/cmd-parser.nvim",
+    },
+    event = "CmdlineEnter",
+    config = function()
+        require("range-highlight").setup()
+    end,
 }
-
-function M.config()
-  require('range-highlight').setup()
-end
-
-return M

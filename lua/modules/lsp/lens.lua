@@ -1,10 +1,5 @@
-local M = {
-    'VidocqH/lsp-lens.nvim',
-    event = 'LspAttach',
+return {
+    "VidocqH/lsp-lens.nvim",
+    event = "LspAttach",
+    opts = {},
 }
-
-function M.config()
-    require'lsp-lens'.setup({})
-end
-
-return M

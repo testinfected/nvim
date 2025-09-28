@@ -3,15 +3,12 @@
   See: https://github.com/rasulomaroff/reactive.nvim
  ]]
 
-local M = {
+return {
     "rasulomaroff/reactive.nvim",
     event = "VeryLazy",
+    config = function()
+        require("reactive").setup({
+            load = { "catppuccin-mocha-cursor", "catppuccin-mocha-cursorline" },
+        })
+    end,
 }
-
-function M.config()
-    require("reactive").setup({
-        load = { "catppuccin-mocha-cursor", "catppuccin-mocha-cursorline" },
-    })
-end
-
-return M

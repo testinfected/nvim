@@ -2,7 +2,8 @@
   Description: Multiple cursors for neovim
   See: https://github.com/brenton-leighton/multiple-cursors.nvim
 ]]
-local M = {
+
+return {
     "brenton-leighton/multiple-cursors.nvim",
     version = "*",
     keys = {
@@ -68,66 +69,65 @@ local M = {
         },
         {
             "<leader>m|",
-            function() require("multiple-cursors").align() end,
+            function()
+                require("multiple-cursors").align()
+            end,
             mode = { "n" },
-            desc = "Align cursors vertically"
+            desc = "Align cursors vertically",
         },
-    }
+    },
+    config = function()
+        require("multiple-cursors").setup({
+            -- nvim-autopairs plugin needs to be disabled while using multiple cursors:
+            opts = {
+                match_visible_only = false, -- match entire buffer
+                pre_hook = function()
+                    require("nvim-autopairs").disable()
+                end,
+
+                post_hook = function()
+                    require("nvim-autopairs").enable()
+                end,
+            },
+
+            custom_key_maps = {
+                -- For normal mode count must be set before nvim-spider's motion function is called:
+                -- w
+                {
+                    { "n", "x" },
+                    "w",
+                    function(_, count)
+                        if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
+                            vim.cmd("normal! " .. count)
+                        end
+                        require("spider").motion("w")
+                    end,
+                },
+
+                -- e
+                {
+                    { "n", "x" },
+                    "e",
+                    function(_, count)
+                        if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
+                            vim.cmd("normal! " .. count)
+                        end
+                        require("spider").motion("e")
+                    end,
+                },
+
+                -- b
+                {
+                    { "n", "x" },
+                    "b",
+                    function(_, count)
+                        if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
+                            vim.cmd("normal! " .. count)
+                        end
+                        require("spider").motion("b")
+                    end,
+                },
+            },
+        })
+    end,
 }
-
-function M.config()
-    require("multiple-cursors").setup({
-        -- nvim-autopairs plugin needs to be disabled while using multiple cursors:
-        opts = {
-            match_visible_only = false, -- match entire buffer
-            pre_hook = function()
-                require("nvim-autopairs").disable()
-            end,
-
-            post_hook = function()
-                require("nvim-autopairs").enable()
-            end,
-        },
-
-        custom_key_maps = {
-            -- For normal mode count must be set before nvim-spider's motion function is called:
-            -- w
-            {
-                { "n", "x" },
-                "w",
-                function(_, count)
-                    if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
-                        vim.cmd("normal! " .. count)
-                    end
-                    require("spider").motion("w")
-                end,
-            },
-
-            -- e
-            {
-                { "n", "x" },
-                "e",
-                function(_, count)
-                    if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
-                        vim.cmd("normal! " .. count)
-                    end
-                    require("spider").motion("e")
-                end,
-            },
-
-            -- b
-            {
-                { "n", "x" },
-                "b",
-                function(_, count)
-                    if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
-                        vim.cmd("normal! " .. count)
-                    end
-                    require("spider").motion("b")
-                end,
-            },
-        },
-    })
-end
-
-return M

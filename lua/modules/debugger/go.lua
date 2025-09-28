@@ -3,14 +3,7 @@
   See: https://github.com/leoluz/nvim-dap-go
 ]]
 
-local M = {
-        "leoluz/nvim-dap-go",
+return {
+    "leoluz/nvim-dap-go",
+    opts = {},
 }
-
-function M.config()
-    require('dap-go').setup({
-
-    })
-end
-
-return M

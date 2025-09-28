@@ -1,5 +1,4 @@
 --[[
-  File: comments.lua
   Description: Adds a new operator to toggle comments in code
   See: https://github.com/numToStr/Comment.nvim
 ]]
