@@ -42,7 +42,6 @@ return {
         StaticMethod = "",
         Macro = "",
     },
-    cmp = {},
     dap = {
         Breakpoint = "󰝥",
         BreakpointCondition = "󰟃",
@@ -111,7 +110,7 @@ return {
         Info = "",
         Hint = "󰌶",
         Action = "󰙈",
-        Lens = '󰧶'
+        Lens = "󰧶",
     },
     ui = {
         ChevronRight = "",
