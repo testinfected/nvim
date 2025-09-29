@@ -29,5 +29,11 @@ return {
 		vim.keymap.set({ "n", "x" }, "gra", function()
 			require("tiny-code-action").code_action()
 		end, { noremap = true, silent = true, desc = "Code actions" })
+		vim.keymap.set("n", "grl", function()
+			vim.lsp.codelens.run()
+		end, { desc = "Code lens", buffer = bufnr })
+		vim.keymap.set("n", "<leader>cf", function()
+			vim.lsp.buf.format()
+		end, { desc = "Format", buffer = bufnr })
 	end,
 }
