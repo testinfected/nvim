@@ -8,7 +8,6 @@ return {
 	event = "VeryLazy",
 	dependencies = {
 		"MunifTanjim/nui.nvim",
-		"nvim-telescope/telescope.nvim",
 	},
 	config = function()
 		require("noice").setup({
@@ -75,7 +74,5 @@ return {
 				},
 			},
 		})
-
-		require("telescope").load_extension("noice")
 	end,
 }

@@ -71,34 +71,6 @@ return {
 						-- For mason.nvim
 						MasonNormal = { link = "NormalFloat" },
 
-						-- For indent-blankline
-						IblIndent = { fg = color.surface0 },
-						IblScope = { fg = color.surface2, style = { "bold" } },
-
-						-- For completion menu
-						-- Pmenu = { fg = color.overlay2, bg = transparent_background and color.none or color.base },
-						-- PmenuBorder = { fg = color.surface1, bg = transparent_background and color.none or color.base },
-						-- PmenuSel = { bg = color.green, fg = color.base },
-						-- CmpItemAbbr = { fg = color.overlay2 },
-						-- CmpItemAbbrMatch = { fg = color.blue, style = { "bold" } },
-						-- CmpDoc = { link = "NormalFloat" },
-						-- CmpDocBorder = {
-						--     fg = transparent_background and color.surface1 or color.mantle,
-						--     bg = transparent_background and color.none or color.mantle,
-						-- },
-
-						NvimTreeRootFolder = { fg = color.pink },
-						NvimTreeIndentMarker = { fg = color.surface2 },
-
-						-- For trouble.nvim
-						TroubleNormal = { bg = transparent_background and color.none or color.base },
-
-						-- For telescope.nvim
-						TelescopeMatching = { fg = color.lavender },
-						TelescopeResultsDiffAdd = { fg = color.green },
-						TelescopeResultsDiffChange = { fg = color.yellow },
-						TelescopeResultsDiffDelete = { fg = color.red },
-
 						-- For treesitter
 						["@keyword.return"] = { fg = color.pink, style = clear },
 						["@error.c"] = { fg = color.none, style = clear },
@@ -126,10 +98,6 @@ return {
 				illuminate = {
 					enabled = true,
 					lsp = true,
-				},
-				indent_blankline = {
-					enabled = true,
-					colored_indent_levels = true,
 				},
 				leap = true,
 				lsp_styles = {
@@ -163,10 +131,6 @@ return {
 				overseer = true,
 				rainbow_delimiters = true,
 				snacks = true,
-				telescope = {
-					enabled = true,
-					style = "nvchad",
-				},
 				treesitter = true,
 				treesitter_context = true,
 				ufo = true,

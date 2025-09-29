@@ -46,10 +46,17 @@ return {
 			{ "<leader>gg", group = "Show" },
 			{ "<leader>gt", group = "Toggle" },
 			{ "<leader>h", group = "Help" },
-			{ "<leader>hm", function() vim.cmd([[WhichKey]]) end, desc = "Show mapping" },
+			{
+				"<leader>hm",
+				function()
+					vim.cmd([[WhichKey]])
+				end,
+				desc = "Show mapping",
+			},
 			{ "<leader>m", group = "Multicursors" },
 			{ "<leader>o", group = "Oversee" },
 			{ "<leader>r", group = "Replace" },
+			{ "<leader>s", group = "Search" },
 			{ "<leader>t", group = "Test" },
 			{ "<leader>u", group = "UI" },
 			{ "<leader>w", group = "Window" },
