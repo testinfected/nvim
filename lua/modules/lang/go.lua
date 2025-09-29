@@ -6,7 +6,6 @@
 return {
 	"ray-x/go.nvim",
 	dependencies = {
-		"ray-x/guihua.lua",
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
 	},
@@ -15,14 +14,14 @@ return {
 	config = function()
 		require("go").setup({
 			icons = false, -- We have already setup dap icons so don't want them overridden here
-			lsp_codelens = true, -- use navigator
+			lsp_codelens = true,
 			lsp_document_formatting = true,
 			lsp_keymaps = false,
 			dap_debug_keymap = false, -- I have set this up already with all my other nvim-dap setup
 			textobjects = false, -- Already have textobjects set up so do not add a mapping for this
 			test_runner = "ginkgo",
 			-- trouble = true,
-			luasnip = true,
+			luasnip = false,
 			lsp_inlay_hints = {
 				enable = true,
 				-- whether to show variable name before type hints with the inlay hints or not
