@@ -39,7 +39,6 @@ return {
 			{ "<c-w>", group = "Window" },
 			{ "<leader>b", group = "Buffer" },
 			{ "<leader>c", group = "Code" },
-			{ "<leader>cd", group = "Diagnostics" },
 			{ "<leader>d", group = "Debug" },
 			{ "<leader>db", group = "Breakpoint" },
 			{ "<leader>f", group = "Find" },
@@ -47,15 +46,8 @@ return {
 			{ "<leader>gg", group = "Show" },
 			{ "<leader>gt", group = "Toggle" },
 			{ "<leader>h", group = "Help" },
-			{
-				"<leader>hm",
-				function()
-					vim.cmd([[WhichKey]])
-				end,
-				desc = "Show mapping",
-			},
+			{ "<leader>hm", function() vim.cmd([[WhichKey]]) end, desc = "Show mapping" },
 			{ "<leader>m", group = "Multicursors" },
-			{ "<leader>n", group = "Navigate" },
 			{ "<leader>o", group = "Oversee" },
 			{ "<leader>r", group = "Replace" },
 			{ "<leader>t", group = "Test" },
