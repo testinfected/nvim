@@ -12,7 +12,9 @@ return {
 		bigfile = { enabled = true },
 		dim = {},
 		indent = {},
-		input = { enabled = false },
+		input = {
+			enabled = true,
+		},
 		notifier = { enabled = true, timeout = 3000 },
 		quickfile = { enabled = true },
 		scroll = { enabled = true },
@@ -21,6 +23,10 @@ return {
 		styles = {
 			notification = {
 				wo = { wrap = true }, -- Wrap notifications
+			},
+			input = {
+				width = 30,
+				relative = "cursor",
 			},
 		},
 	},

@@ -47,10 +47,10 @@ return {
 					},
 				},
 				hover = {
-					enabled = false,
+					enabled = true,
 				},
 				signature = {
-					enabled = false,
+					enabled = true,
 				},
 				message = {
 					-- Messages shown by lsp servers
@@ -63,7 +63,7 @@ return {
 				bottom_search = true, -- turn on to use a classic bottom cmdline for search
 				command_palette = false, -- turn on to position the cmdline and popupmenu together
 				long_message_to_split = true, -- turn on to send long messages to a split
-				inc_rename = true, -- turn on to enable an input dialog for inc-rename.nvim
+				inc_rename = false, -- turn on to enable an input dialog for inc-rename.nvim
 				lsp_doc_border = "rounded", -- add a border to hover docs and signature help
 			},
 			views = {
