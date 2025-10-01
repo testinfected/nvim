@@ -28,7 +28,29 @@ return {
 		-- C-k: Toggle signature help (if signature.enabled = true)
 		--
 		-- See :h blink-cmp-config-keymap for defining your own keymap
-		keymap = { preset = "super-tab" },
+		keymap = {
+			preset = "enter",
+			["<Tab>"] = {
+				function(cmp)
+					if cmp.snippet_active() then
+						return cmp.accept()
+					else
+						return cmp.select_next({ on_ghost_text = true })
+					end
+				end,
+				"snippet_forward",
+				"fallback",
+			},
+			["<S-Tab>"] = {
+				function(cmp)
+					if not cmp.snippet_active() then
+						return cmp.select_prev({ on_ghost_text = true })
+					end
+				end,
+				"snippet_backward",
+				"fallback",
+			},
+		},
 
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
