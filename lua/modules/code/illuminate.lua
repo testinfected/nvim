@@ -30,9 +30,6 @@ return {
 			-- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
 			filetypes_denylist = {
 				"dirvish",
-				"fugitive",
-				"NvimTree",
-				"guihua",
 				"Overseer",
 			},
 			-- filetypes_allowlist: filetypes to illuminate, this is overridden by filetypes_denylist

@@ -13,7 +13,6 @@ for _, arrow_key in ipairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
 	map("n", arrow_key, "<Nop>")
 end
 
-
 -- Save using CTRL-s and exit insert mode
 map({ "n", "i" }, "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save file", silent = true })
 
@@ -22,8 +21,8 @@ map({ "n", "i" }, "<C-s>", "<Cmd>w<CR><ESC>", { desc = "Save file", silent = tru
 map("i", "<C-l>", "<Del>", { remap = true })
 -- CTRL-j (CR) and CTRL-k (digrams) have little use so remap them to left and right cursor keys for small movements
 -- without leaving insert mode. Not true used by completion menu
--- map("i", "<C-j>", "<Left>")
--- map("i", "<C-k>", "<Right>")
+map("i", "<C-j>", "<Left>")
+map("i", "<C-k>", "<Right>")
 
 --The & command repeats the last substitution (synonym for :s).
 -- Unfortunately, it disregards flags, so make & trigger the :&& command which preserves flags
