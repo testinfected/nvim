@@ -5,9 +5,11 @@
 
 return {
 	"ray-x/go.nvim",
+	branch = "treesitter-main",
 	dependencies = {
-		"mason-org/mason.nvim",
-		"mason-org/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+		"nvim-treesitter/nvim-treesitter",
+		"ray-x/guihua.lua",
 	},
 	ft = { "go", "gomod" },
 	build = ':lua require("go.install").update_all_sync()',
