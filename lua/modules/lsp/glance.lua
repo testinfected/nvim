@@ -8,6 +8,7 @@ return {
 				enable = true,
 			},
 		})
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Goto definition" })
 		vim.keymap.set("n", "grd", "<CMD>Glance definitions<CR>", { desc = "Glance definition" })
 		vim.keymap.set("n", "grr", "<CMD>Glance references<CR>", { desc = "Glance references" })
 		vim.keymap.set("n", "grt", "<CMD>Glance type_definitions<CR>", { desc = "Glance type definition" })
