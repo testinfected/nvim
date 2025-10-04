@@ -79,6 +79,7 @@ return {
 				end,
 			},
 
+			auto_integrations = true,
 			integrations = {
 				barbar = true,
 				-- beacon = true,
