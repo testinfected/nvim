@@ -53,7 +53,6 @@ return {
 				end,
 				desc = "Show mapping",
 			},
-			{ "<leader>m", group = "Multicursors" },
 			{ "<leader>o", group = "Oversee" },
 			{ "<leader>r", group = "Replace" },
 			{ "<leader>s", group = "Search" },

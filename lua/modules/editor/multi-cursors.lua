@@ -4,130 +4,78 @@
 ]]
 
 return {
-    "brenton-leighton/multiple-cursors.nvim",
-    version = "*",
-    keys = {
-        {
-            "<C-j>",
-            "<Cmd>MultipleCursorsAddDown<CR>",
-            mode = { "n", "x" },
-            desc = "Add cursor and move down",
-        },
-        {
-            "<C-k>",
-            "<Cmd>MultipleCursorsAddUp<CR>",
-            mode = { "n", "x" },
-            desc = "Add cursor and move up",
-        },
-        {
-            "<C-Up>",
-            "<Cmd>MultipleCursorsAddUp<CR>",
-            mode = { "n", "i", "x" },
-            desc = "Add cursor and move up",
-        },
-        {
-            "<C-Down>",
-            "<Cmd>MultipleCursorsAddDown<CR>",
-            mode = { "n", "i", "x" },
-            desc = "Add cursor and move down",
-        },
-        {
-            "<C-LeftMouse>",
-            "<Cmd>MultipleCursorsMouseAddDelete<CR>",
-            mode = { "n", "i" },
-            desc = "Add or remove cursor",
-        },
-        {
-            "<leader>ma",
-            "<Cmd>MultipleCursorsAddMatches<CR>",
-            mode = { "n", "x" },
-            desc = "Add cursors to matching words",
-        },
-        {
-            "<leader>mA",
-            "<Cmd>MultipleCursorsAddMatchesV<CR>",
-            mode = { "n", "x" },
-            desc = "Add cursors in last selection",
-        },
-        {
-            "<Leader>md",
-            "<Cmd>MultipleCursorsAddJumpNextMatch<CR>",
-            mode = { "n", "x" },
-            desc = "Add cursor and jump to next match",
-        },
-        {
-            "<leader>mD",
-            "<Cmd>MultipleCursorsJumpNextMatch<CR>",
-            mode = { "n", "x" },
-            desc = "Jump to next match",
-        },
-        {
-            "<leader>ml",
-            "<Cmd>MultipleCursorsLock<CR>",
-            mode = { "n", "x" },
-            desc = "Lock virtual cursors",
-        },
-        {
-            "<leader>m|",
-            function()
-                require("multiple-cursors").align()
-            end,
-            mode = { "n" },
-            desc = "Align cursors vertically",
-        },
-    },
-    config = function()
-        require("multiple-cursors").setup({
-            -- nvim-autopairs plugin needs to be disabled while using multiple cursors:
-            opts = {
-                match_visible_only = false, -- match entire buffer
-                pre_hook = function()
-                    require("nvim-autopairs").disable()
-                end,
+	"jake-stewart/multicursor.nvim",
+	config = function()
+		local mc = require("multicursor-nvim")
+		mc.setup()
 
-                post_hook = function()
-                    require("nvim-autopairs").enable()
-                end,
-            },
+		local set = vim.keymap.set
 
-            custom_key_maps = {
-                -- For normal mode count must be set before nvim-spider's motion function is called:
-                -- w
-                {
-                    { "n", "x" },
-                    "w",
-                    function(_, count)
-                        if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
-                            vim.cmd("normal! " .. count)
-                        end
-                        require("spider").motion("w")
-                    end,
-                },
+		-- Add or skip cursor above/below the main cursor.
+		set({ "n", "x" }, "<up>", function()
+			mc.lineAddCursor(-1)
+		end, { desc = "Add cursor above" })
+		set({ "n", "x" }, "<down>", function()
+			mc.lineAddCursor(1)
+		end, { desc = "Add cursor below" })
+		set({ "n", "x" }, "<leader><up>", function()
+			mc.lineSkipCursor(-1)
+		end, { desc = "Skip cursor at line above" })
+		set({ "n", "x" }, "<leader><down>", function()
+			mc.lineSkipCursor(1)
+		end, { desc = "Skip cursor at line below" })
 
-                -- e
-                {
-                    { "n", "x" },
-                    "e",
-                    function(_, count)
-                        if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
-                            vim.cmd("normal! " .. count)
-                        end
-                        require("spider").motion("e")
-                    end,
-                },
+		-- Add or skip adding a new cursor by matching word/selection
+		set({ "n", "x" }, "<leader>j", function()
+			mc.matchAddCursor(1)
+		end, { desc = "Add cursor at next match" })
+		set({ "n", "x" }, "<leader>J", function()
+			mc.matchSkipCursor(1)
+		end, { desc = "Skip cursor at next match" })
+		set({ "n", "x" }, "<leader>k", function()
+			mc.matchAddCursor(-1)
+		end, { desc = "Add cursor at previous match" })
+		set({ "n", "x" }, "<leader>K", function()
+			mc.matchSkipCursor(-1)
+		end, { desc = "Skip cursor at previous match" })
 
-                -- b
-                {
-                    { "n", "x" },
-                    "b",
-                    function(_, count)
-                        if count ~= 0 and vim.api.nvim_get_mode().mode == "n" then
-                            vim.cmd("normal! " .. count)
-                        end
-                        require("spider").motion("b")
-                    end,
-                },
-            },
-        })
-    end,
+		-- Add and remove cursors with control + left click.
+		set("n", "<c-leftmouse>", mc.handleMouse)
+		set("n", "<c-leftdrag>", mc.handleMouseDrag)
+		set("n", "<c-leftrelease>", mc.handleMouseRelease)
+
+		-- Disable and enable cursors.
+		set({ "n", "x" }, "<c-q>", mc.toggleCursor, { desc = "Toggle cursors" })
+
+		-- Mappings defined in a keymap layer only apply when there are
+		-- multiple cursors. This lets you have overlapping mappings.
+		mc.addKeymapLayer(function(layerSet)
+			-- Select a different cursor as the main one.
+			layerSet({ "n", "x" }, "<left>", mc.prevCursor, { desc = "Select previous cursor" })
+			layerSet({ "n", "x" }, "<right>", mc.nextCursor, { desc = "Select next cursor" })
+
+			-- Delete the main cursor.
+			layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor, { desc = "Delete main cursor" })
+
+			-- Enable and clear cursors using escape.
+			layerSet("n", "<esc>", function()
+				if not mc.cursorsEnabled() then
+					mc.enableCursors()
+				else
+					mc.clearCursors()
+				end
+			end, { desc = "Enable or clear cursors" })
+		end)
+
+		-- Customize how cursors look.
+		local hl = vim.api.nvim_set_hl
+		hl(0, "MultiCursorCursor", { reverse = true })
+		hl(0, "MultiCursorVisual", { link = "Visual" })
+		hl(0, "MultiCursorSign", { link = "SignColumn" })
+		hl(0, "MultiCursorMatchPreview", { link = "Search" })
+		hl(0, "MultiCursorDisabledCursor", { reverse = true })
+		hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
+		hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
+	end,
+	event = { "BufEnter" },
 }
