@@ -7,9 +7,7 @@ return {
 	"nvim-treesitter/nvim-treesitter",
 	branch = "main",
 	build = [[:TSUpdate]],
-	-- does not support lazy loading
-	lazy = false,
-
+	event = { "BufRead" },
 	config = function()
 		require("nvim-treesitter").install({
 			-- "clojure",
@@ -21,6 +19,7 @@ return {
 			"javascript",
 			"json",
 			"lua",
+			"make",
 			"markdown",
 			"markdown_inline",
 			"python",
