@@ -13,7 +13,12 @@ return {
 		explorer = {},
 		indent = {},
 		input = {},
-		notifier = { timeout = 3000 },
+		notifier = {
+			width = {
+				min = 30,
+			},
+			timeout = 3000,
+		},
 		picker = {
 			sources = {
 				explorer = {
@@ -28,7 +33,9 @@ return {
 		zen = {},
 		styles = {
 			notification = {
-				wo = { wrap = true }, -- Wrap notifications
+				wo = {
+					winblend = "0",
+				}, -- Wrap notifications
 			},
 			input = {
 				width = 30,

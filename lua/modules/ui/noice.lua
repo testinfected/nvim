@@ -21,7 +21,7 @@ return {
 				view = "mini",
 			},
 			popupmenu = {
-				enabled = true, -- enable Noice popupmenu UI
+				enabled = true, -- enable Noice command line popupmenu UI
 				---@type 'nui'|'cmp'
 				backend = "nui", -- use cmp as a backend to show cmdline completions
 				-- backend = 'cmp',                           -- use cmp as a backend to show cmdline completions
@@ -29,31 +29,28 @@ return {
 				kind_icons = require("config.icons").kind, -- set to `false` to disable icons
 			},
 			notify = {
-				-- Use noice as `vim.notify`
-				enabled = true,
-				view = "snacks",
+				-- Use noice as `vim.notify`?
+				enabled = false,
 			},
 			lsp = {
 				progress = {
-					enabled = true,
-					view = "mini",
-				},
-				override = {
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true,
-					},
+					enabled = false,
 				},
 				hover = {
-					enabled = true,
+					enabled = false,
 				},
 				signature = {
-					enabled = true,
+					enabled = false,
 				},
 				message = {
 					-- Messages shown by lsp servers
 					enabled = true,
+				},
+				override = {
+					-- override the default lsp markdown formatter with Noice
+					["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+					-- override the lsp markdown formatter with Noice
+					["vim.lsp.util.stylize_markdown"] = false,
 				},
 			},
 			presets = {

@@ -21,7 +21,6 @@ return {
 			lsp_keymaps = false,
 			dap_debug_keymap = false, -- I have set this up already with all my other nvim-dap setup
 			textobjects = false, -- Already have textobjects set up so do not add a mapping for this
-			test_runner = "ginkgo",
 			-- trouble = true,
 			luasnip = false,
 			lsp_inlay_hints = {
@@ -56,15 +55,8 @@ return {
 		})
 
 		-- Use go.nvim gopls config with lsp
-		require("go.lsp").setup()
-
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "go" },
-			desc = "Go Test key bindings",
-			callback = function()
-				vim.keymap.set("n", "<leader>tt", "[[<cmd>GoTestFile<cr>]]", { desc = "Run for current file" })
-				vim.keymap.set("n", "<leader>tc", "[[<cmd>GoTermClose<cr>]]", { desc = "Close output" })
-			end,
-		})
+		local cfg = require("go.lsp").config() -- config() return the go.nvim gopls setup
+		vim.lsp.config("gopls", cfg)
+		vim.lsp.enable("gopls")
 	end,
 }
