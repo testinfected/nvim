@@ -4,7 +4,7 @@
 ]]
 
 return {
-    "tummetott/unimpaired.nvim",
-    event = "VeryLazy",
-    config = true,
+	"tummetott/unimpaired.nvim",
+	event = "VeryLazy",
+	opts = {},
 }
