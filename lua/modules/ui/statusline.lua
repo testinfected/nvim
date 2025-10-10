@@ -36,32 +36,6 @@ return {
 			cond = conditions.hide_in_width,
 		}
 
-		local diagnostics = {
-			"diagnostics",
-			sources = { "nvim_diagnostic" },
-			sections = { "error", "warn" },
-			symbols = { error = icons.diagnostics.Error, warn = icons.diagnostics.Warning },
-			colored = true,
-			update_in_insert = false,
-			always_visible = false,
-		}
-
-		local lsp = {
-			-- Lsp server name .
-			function()
-				local clients = vim.lsp.get_clients()
-				local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-				for _, client in ipairs(clients) do
-					local filetypes = client.config.filetypes
-					if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-						return client.name
-					end
-				end
-				return ""
-			end,
-			icon = icons.lsp.Server,
-		}
-
 		-- Adapted from catppuccin lualine integration, see https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/utils/lualine.lua
 		local function bubble_theme()
 			local C = require("catppuccin.palettes").get_palette()
@@ -116,13 +90,9 @@ return {
 				component_separators = icons.ui.VerticalDottedLineThick,
 				section_separators = { left = icons.ui.RightPill, right = icons.ui.LeftPill },
 				disabled_filetypes = {
-					statusline = {
-						"alpha",
-						"lazy",
-						"lspinfo",
-						"lsp-installer",
-						"overseer",
-					},
+					"snacks_layout_box",
+					"",
+					"quickfix",
 				},
 			},
 			sections = {
@@ -143,8 +113,8 @@ return {
 						return require("screenkey").get_keys()
 					end,
 				},
-				lualine_x = { "overseer" },
-				lualine_y = { "filetype", lsp, diagnostics, "progress" },
+				lualine_x = {},
+				lualine_y = { "filetype", "lsp_status", "diagnostics", "progress" },
 				lualine_z = {
 					{ "location", separator = { right = icons.ui.RightPill }, left_padding = 2 },
 				},
@@ -159,8 +129,10 @@ return {
 			},
 			tabline = {},
 			extensions = {
-				"nvim-tree",
 				"lazy",
+				"mason",
+				"nvim-dap-ui",
+				"quickfix",
 			},
 		})
 	end,

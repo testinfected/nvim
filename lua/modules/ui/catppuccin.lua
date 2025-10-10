@@ -79,10 +79,9 @@ return {
 				end,
 			},
 
+			default_integrations = true,
 			auto_integrations = true,
 			integrations = {
-				barbar = true,
-				-- beacon = true,
 				blink_cmp = {
 					styled = "bordered",
 				},
@@ -90,7 +89,6 @@ return {
 					enabled = true,
 					enable_ui = true, -- enable nvim-dap-ui
 				},
-				dap_ui = true,
 				gitsigns = {
 					enabled = true,
 					-- align with the transparent_background option by default
@@ -100,7 +98,6 @@ return {
 					enabled = true,
 					lsp = true,
 				},
-				leap = true,
 				lsp_styles = {
 					enabled = true,
 					virtual_text = {
@@ -119,23 +116,13 @@ return {
 						background = true,
 					},
 				},
-				lsp_trouble = true,
-				markdown = true,
-				mason = true,
+				fidget = {
+					enabled = true,
+				},
 				mini = {
 					enabled = true,
 				},
 				neotest = true,
-				noice = true,
-				nvim_surround = true,
-				nvimtree = true,
-				overseer = true,
-				rainbow_delimiters = true,
-				snacks = true,
-				treesitter = true,
-				treesitter_context = true,
-				ufo = true,
-				which_key = true,
 			},
 		})
 
