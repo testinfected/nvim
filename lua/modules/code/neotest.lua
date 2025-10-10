@@ -9,12 +9,29 @@ return {
 		"nvim-neotest/nvim-nio",
 		"nvim-lua/plenary.nvim",
 		"antoinemadec/FixCursorHold.nvim",
-		"nvim-treesitter/nvim-treesitter",
+		{
+			"nvim-treesitter/nvim-treesitter",
+			branch = "main",
+			build = function()
+				vim.cmd(":TSUpdate go")
+			end,
+		},
 		"nvim-neotest/neotest-python",
-		"fredrikaverpil/neotest-golang",
+		{
+			"fredrikaverpil/neotest-golang",
+			dependencies = {
+				{
+					"leoluz/nvim-dap-go",
+					opts = {},
+				},
+			},
+			build = function()
+				vim.system({ "go", "install", "gotest.tools/gotestsum@latest" }):wait() -- Optional, but recommended
+			end,
+		},
 		"rouge8/neotest-rust",
 	},
-	event = "LspAttach",
+	event = "VeryLazy",
 	config = function()
 		-- get neotest namespace (api call creates or returns namespace)
 		local neotest_ns = vim.api.nvim_create_namespace("neotest")
@@ -31,9 +48,21 @@ return {
 		neotest.setup({
 			adapters = {
 				require("neotest-python"),
-				require("neotest-golang")({ dap_go_enabled = true }),
+				require("neotest-golang")({
+					go_test_args = {
+						"-v",
+						"-coverprofile=" .. vim.fn.getcwd() .. "/coverage.out",
+					},
+					dap_go_enabled = true,
+					log_level = 1,
+					runner = "gotestsum", -- Optional, but recommended
+				}),
 				require("neotest-rust"),
 			},
+			discovery = {
+				enabled = true,
+			},
+			log_level = vim.log.levels.DEBUG,
 		})
 
 		-- Keymaps

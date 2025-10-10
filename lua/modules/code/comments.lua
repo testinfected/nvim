@@ -5,7 +5,7 @@
 
 -- :help comment-nvim
 return {
-    "numToStr/Comment.nvim",
-    event = "VeryLazy",
-    config = true,
+	"numToStr/Comment.nvim",
+	event = "VeryLazy",
+	opts = {},
 }
