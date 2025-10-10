@@ -4,7 +4,7 @@
 ]]
 
 return {
-    "cpea2506/relative-toggle.nvim",
-    event = { "VeryLazy" },
-    config = true,
+	"cpea2506/relative-toggle.nvim",
+	event = { "VeryLazy" },
+	opts = {},
 }
