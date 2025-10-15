@@ -6,8 +6,16 @@
 return {
 	"gbprod/yanky.nvim",
 	opts = {},
-	dependencies = { "stevearc/dressing.nvim" },
+	dependencies = { "folke/snacks.nvim" },
 	keys = {
+		{
+			"<leader>p",
+			function()
+				Snacks.picker.yanky()
+			end,
+			mode = { "n", "x" },
+			desc = "Open Yank History",
+		},
 		{
 			"y",
 			"<Plug>(YankyYank)",
@@ -39,7 +47,6 @@ return {
 			desc = "Put yanked text before selection",
 		},
 		{ "<c-p>", "<Plug>(YankyPreviousEntry)", desc = "Select previous entry through yank history" },
-		-- <c-n> is used for multicursors
 		{ "<c-;>", "<Plug>(YankyNextEntry)", desc = "Select next entry through yank history" },
 		{ "]p", "<Plug>(YankyPutIndentAfterLinewise)", desc = "Put indented after cursor (linewise)" },
 		{ "[p", "<Plug>(YankyPutIndentBeforeLinewise)", desc = "Put indented before cursor (linewise)" },
