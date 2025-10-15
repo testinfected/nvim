@@ -46,14 +46,6 @@ return {
 			{ "<leader>g", group = "Git" },
 			{ "<leader>gg", group = "Show" },
 			{ "<leader>gt", group = "Toggle" },
-			{ "<leader>h", group = "Help" },
-			{
-				"<leader>hm",
-				function()
-					vim.cmd([[WhichKey]])
-				end,
-				desc = "Show mapping",
-			},
 			{ "<leader>r", group = "Replace" },
 			{ "<leader>s", group = "Search" },
 			{ "<leader>t", group = "Test" },

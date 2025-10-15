@@ -12,6 +12,7 @@ return {
 	priority = 1000,
 	config = function()
 		local catppuccin = require("catppuccin")
+		local colors = require("catppuccin.utils.colors")
 		local transparent_background = true
 		local clear = {}
 
@@ -40,44 +41,53 @@ return {
 				operators = {},
 			},
 			color_overrides = {},
-			highlight_overrides = {
-				all = function(color)
-					return {
-						-- For base configs
-						NormalFloat = { fg = color.text, bg = transparent_background and color.none or color.mantle },
-						FloatBorder = {
-							fg = transparent_background and color.blue or color.mantle,
-							bg = transparent_background and color.none or color.mantle,
-						},
-						CursorLineNr = { fg = color.green },
+			custom_higlights = function(palette)
+				return {
+					-- For base connigs
+					NormalFloat = { fg = palette.text, bg = transparent_background and palette.none or palette.mantle },
+					FloatBorder = {
+						fg = transparent_background and palette.blue or palette.mantle,
+						bg = transparent_background and palette.none or palette.mantle,
+					},
+					CursorLineNr = { fg = palette.green },
 
-						-- For Bufferline (with Barbar)
-						BufferTabpageFill = { bg = transparent_background and color.none or color.base },
-						BufferInactive = { bg = color.base },
-						BufferInactiveBtn = { bg = color.base },
-						BufferInactiveIcon = { bg = color.base },
-						BufferInactiveSign = { bg = color.base },
-						BufferInactiveIndex = { bg = color.base },
-						BufferInactiveNumber = { bg = color.base },
-						BufferInactivePin = { bg = color.base },
+					-- For Bufferline (with Barbar)
+					BufferTabpageFill = { bg = transparent_background and palette.none or palette.base },
+					BufferInactive = { bg = palette.base },
+					BufferInactiveBtn = { bg = palette.base },
+					BufferInactiveIcon = { bg = palette.base },
+					BufferInactiveSign = { bg = palette.base },
+					BufferInactiveIndex = { bg = palette.base },
+					BufferInactiveNumber = { bg = palette.base },
+					BufferInactivePin = { bg = palette.base },
 
-						-- For native lsp configs
-						DiagnosticVirtualTextError = { bg = color.none },
-						DiagnosticVirtualTextWarn = { bg = color.none },
-						DiagnosticVirtualTextInfo = { bg = color.none },
-						DiagnosticVirtualTextHint = { bg = color.none },
-						LspInfoBorder = { link = "FloatBorder" },
+					-- For native lsp configs
+					DiagnosticVirtualTextError = { bg = palette.none },
+					DiagnosticVirtualTextWarn = { bg = palette.none },
+					DiagnosticVirtualTextInfo = { bg = palette.none },
+					DiagnosticVirtualTextHint = { bg = palette.none },
+					LspInfoBorder = { link = "FloatBorder" },
 
-						-- For mason.nvim
-						MasonNormal = { link = "NormalFloat" },
+					-- For mason.nvim
+					MasonNormal = { link = "NormalFloat" },
 
-						-- For treesitter
-						["@keyword.return"] = { fg = color.pink, style = clear },
-						["@error.c"] = { fg = color.none, style = clear },
-						["@error.cpp"] = { fg = color.none, style = clear },
-					}
-				end,
-			},
+					-- For treesitter
+					["@keyword.return"] = { fg = palette.pink, style = clear },
+					["@error.c"] = { fg = palette.none, style = clear },
+					["@error.cpp"] = { fg = palette.none, style = clear },
+
+					-- For time-machine.nvim
+					TimeMachineCurrent = {
+						bg = colors.darken(palette.blue, 0.18, palette.base),
+					},
+					TimeMachineTimeline = { fg = palette.blue, style = { "bold" } },
+					TimeMachineTimelineAlt = { fg = palette.overlay2 },
+					TimeMachineKeymap = { fg = palette.teal, style = { "italic" } },
+					TimeMachineInfo = { fg = palette.subtext0, style = { "italic" } },
+					TimeMachineSeq = { fg = palette.peach, style = { "bold" } },
+					TimeMachineTag = { fg = palette.yellow, style = { "bold" } },
+				}
+			end,
 
 			default_integrations = true,
 			auto_integrations = true,
@@ -115,9 +125,6 @@ return {
 					inlay_hints = {
 						background = true,
 					},
-				},
-				fidget = {
-					enabled = true,
 				},
 				mini = {
 					enabled = true,
