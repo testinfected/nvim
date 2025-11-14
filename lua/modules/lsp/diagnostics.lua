@@ -14,5 +14,28 @@ return {
 				vim.diagnostic.config({ virtual_text = false })
 			end,
 		})
+
+		local icons = require("config/icons")
+		vim.diagnostic.config({
+			virtual_text = true,
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = icons.diagnostics.Error, -- Example: Using a Nerd Font icon for errors
+					[vim.diagnostic.severity.WARN] = icons.diagnostics.Warning, -- Example: Using a Nerd Font icon for warnings
+					[vim.diagnostic.severity.INFO] = icons.diagnostics.Info, -- Example: Using a Nerd Font icon for info
+					[vim.diagnostic.severity.HINT] = icons.diagnostics.Hint, -- Example: Using a Nerd Font icon for hints
+				},
+				-- Optional: define highlight groups for the sign column
+				numhl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+					[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+					[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+					[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+				},
+			},
+			underline = true,
+			update_in_insert = false,
+			severity_sort = true,
+		})
 	end,
 }

@@ -24,6 +24,21 @@ return {
 				["rename"] = { "󰑕", { link = "DiagnosticWarning" } },
 				["codeAction"] = { "", { link = "DiagnosticWarning" } },
 			},
+			backend_opts = {
+				difftastic = {
+					header_lines_to_remove = 1,
+
+					-- The arguments to pass to difftastic
+					args = {
+						"--color=always",
+						"--display=inline",
+						"--syntax-highlight=on",
+					},
+				},
+				diffsofancy = {
+					header_lines_to_remove = 4,
+				},
+			},
 		})
 		-- Override default code action
 		vim.keymap.set({ "n", "x" }, "gra", function()
