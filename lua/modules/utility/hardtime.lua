@@ -10,5 +10,7 @@ return {
 			["<Left>"] = false,
 			["<Right>"] = false,
 		},
+		disable_mouse = false,
+		restriction_mode = "hint",
 	},
 }
