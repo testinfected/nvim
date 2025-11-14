@@ -14,8 +14,7 @@ return {
 			icons = {
 				-- Configure the base icons on the bufferline.
 				-- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
-				buffer_index = "superscript",
-				buffer_number = false,
+				buffer_index = true,
 				button = icons.ui.Close,
 				-- Enables / disables diagnostic symbols
 				diagnostics = {
@@ -44,29 +43,6 @@ return {
 			},
 		})
 
-		local map = vim.keymap.set
-		map("n", "<leader>1", [[<Cmd>BufferGoto 1<CR>]], { desc = "Go to buffer 1" })
-		map("n", "<leader>2", [[<Cmd>BufferGoto 2<CR>]], { desc = "Go to buffer 2" })
-		map("n", "<leader>3", [[<Cmd>BufferGoto 3<CR>]], { desc = "Go to buffer 3" })
-		map("n", "<leader>4", [[<Cmd>BufferGoto 4<CR>]], { desc = "Go to buffer 4" })
-		map("n", "<leader>5", [[<Cmd>BufferGoto 5<CR>]], { desc = "Go to buffer 5" })
-		map("n", "<leader>6", [[<Cmd>BufferGoto 6<CR>]], { desc = "Go to buffer 6" })
-		map("n", "<leader>7", [[<Cmd>BufferGoto 7<CR>]], { desc = "Go to buffer 7" })
-		map("n", "<leader>8", [[<Cmd>BufferGoto 8<CR>]], { desc = "Go to buffer 8" })
-		map("n", "<leader>9", [[<Cmd>BufferGoto 9<CR>]], { desc = "Go to buffer 9" })
-		map("n", "<leader>0", [[<Cmd>BufferLast<CR>]], { desc = "Go to last buffer" })
-
-		-- Move to previous/next
-		map("n", "<leader>bj", "<Cmd>BufferPrevious<CR>", { desc = "Previous" })
-		map("n", "<leader>bk", "<Cmd>BufferNext<CR>", { desc = "Next" })
-		-- Re-order to previous/next
-		map("n", "<leader>b,", "<Cmd>BufferMovePrevious<CR>", { desc = "Move left" })
-		map("n", "<leader>b.", "<Cmd>BufferMoveNext<CR>", { desc = "Move right" })
-		-- Pin/unpin buffer
-		map("n", "<leader>bp", "<Cmd>BufferPin<CR>", { desc = "Pin/unpin" })
-		-- Close buffer
-		map("n", "<leader>bc", "<Cmd>BufferClose<CR>", { desc = "Close" })
-		map("n", "<leader>bs", "<Cmd>BufferPick<CR>", { desc = "Pick" })
 		-- Wipeout buffer
 		--                 :BufferWipeout
 		-- Close commands

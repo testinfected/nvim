@@ -78,7 +78,7 @@ return {
 		end, { desc = "Run File" })
 		map("n", prefix .. "a", function()
 			neotest.run.run(vim.loop.cwd())
-		end, { desc = "Run all tiles" })
+		end, { desc = "Run all tests" })
 		map("n", prefix .. "s", function()
 			neotest.summary.toggle()
 		end, { desc = "Toggle summary" })

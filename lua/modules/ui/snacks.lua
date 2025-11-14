@@ -29,6 +29,21 @@ return {
 		},
 		quickfile = {},
 		scroll = {},
+		statuscolumn = {
+			enabled = false, -- as it doesn't support DAP integration nor test coverage marks
+			left = { "mark", "sign" }, -- priority of signs on the left (high to low)
+			right = { "fold", "git" }, -- priority of signs on the right (high to low)
+			folds = {
+				open = true, -- show open fold icons
+				git_hl = false, -- use Git Signs hl for fold icons
+			},
+			git = {
+				-- patterns to match Git signs
+				patterns = { "GitSign", "MiniDiffSign" },
+			},
+			refresh = 50, -- refresh at most every 50ms
+		},
+
 		words = {},
 		zen = {},
 		styles = {
@@ -196,6 +211,13 @@ return {
 				Snacks.picker.git_branches()
 			end,
 			desc = "Branches",
+		},
+		{
+			"<leader>gf",
+			function()
+				Snacks.picker.git_log_line()
+			end,
+			desc = "Log file",
 		},
 		{
 			"<leader>gl",
@@ -395,19 +417,19 @@ return {
 			desc = "Undo history",
 		},
 		{
-			"<leader>uC",
-			function()
-				Snacks.picker.colorschemes()
-			end,
-			desc = "Colorschemes",
-		},
-		{
 			"<leader>sw",
 			function()
 				Snacks.picker.grep_word()
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
+		},
+		{
+			"<leader>oC",
+			function()
+				Snacks.picker.colorschemes()
+			end,
+			desc = "Colorschemes",
 		},
 	},
 	init = function()
@@ -423,26 +445,26 @@ return {
 				end
 				vim.print = _G.dd -- Override print to use snacks for `:=` command
 				-- Create some toggle mappings
-				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-				Snacks.toggle.option("relativenumber", { name = "Relative number" }):map("<leader>uL")
-				Snacks.toggle.animate():map("<leader>ua")
-				Snacks.toggle.diagnostics():map("<leader>ud")
-				Snacks.toggle.dim():map("<leader>uD")
-				Snacks.toggle.indent():map("<leader>ui")
-				Snacks.toggle.line_number():map("<leader>ul")
+				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>os")
+				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>ow")
+				Snacks.toggle.option("relativenumber", { name = "Relative number" }):map("<leader>oL")
+				Snacks.toggle.animate():map("<leader>oa")
+				Snacks.toggle.diagnostics():map("<leader>od")
+				Snacks.toggle.dim():map("<leader>oD")
+				Snacks.toggle.indent():map("<leader>oi")
+				Snacks.toggle.line_number():map("<leader>ol")
 				Snacks.toggle
 					.option(
 						"conceallevel",
 						{ name = "Conceal", off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }
 					)
-					:map("<leader>uc")
-				Snacks.toggle.treesitter():map("<leader>uT")
+					:map("<leader>oc")
+				Snacks.toggle.treesitter():map("<leader>oT")
 				Snacks.toggle
 					.option("background", { off = "light", on = "dark", name = "Dark background" })
-					:map("<leader>ub")
-				Snacks.toggle.inlay_hints():map("<leader>uh")
-				Snacks.toggle.zen():map("<leader>uz")
+					:map("<leader>ob")
+				Snacks.toggle.inlay_hints():map("<leader>oh")
+				Snacks.toggle.zen():map("<leader>oz")
 			end,
 		})
 	end,
