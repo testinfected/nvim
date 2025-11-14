@@ -14,7 +14,6 @@ return {
 	config = function()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"dagger", -- LSP for CUE
 				"bashls", -- LSP for Bash
 				"cssls", -- LSP for CSS
 				"dockerls", -- LSP for Docker (exl. Docker Compose)
@@ -34,6 +33,15 @@ return {
 					"rust_analyzer",
 				},
 			},
+		})
+
+		vim.lsp.enable("cue")
+		-- Format on save
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*.cue",
+			callback = function()
+				vim.lsp.buf.format({ async = false })
+			end,
 		})
 
 		vim.api.nvim_create_autocmd({ "LspAttach", "CursorHold", "BufEnter", "InsertLeave" }, {
