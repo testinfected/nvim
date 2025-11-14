@@ -19,7 +19,7 @@ vim.o.guicursor = "" -- use block cursor for all modes
 ---}}},
 
 -- Buffers {{{
-vim.o.autoread = true  -- reload file if changed outside nvim
+vim.o.autoread = true -- reload file if changed outside nvim
 vim.o.autowrite = true -- autowrite file
 vim.o.autowriteall = true
 vim.o.switchbuf = "usetab,uselast"
@@ -27,9 +27,9 @@ vim.o.writeany = true
 ---}}},
 
 -- Tabs {{{
-vim.o.expandtab = true   -- Use spaces by default
-vim.o.shiftwidth = 4     -- Set amount of space characters, when we press '<' or '>'
-vim.o.tabstop = 4        -- 1 tab equal 2 spaces
+vim.o.expandtab = true -- Use spaces by default
+vim.o.shiftwidth = 4 -- Set amount of space characters, when we press '<' or '>'
+vim.o.tabstop = 4 -- 1 tab equal 2 spaces
 vim.o.smartindent = true -- Turn on smart indentation. See in the docs for more info
 -- }}}
 
@@ -37,9 +37,9 @@ vim.o.smartindent = true -- Turn on smart indentation. See in the docs for more 
 vim.o.number = true -- Show line numbers
 vim.o.cursorline = true
 vim.o.cursorlineopt = "number"
-vim.o.mouse = "a"      -- Enable mouse in all modes,
+vim.o.mouse = "a" -- Enable mouse in all modes,
 vim.o.timeout = true
-vim.o.timeoutlen = 200 -- Wait no more that 200ms for key mappings to complete, change according to your typing speed
+vim.o.timeoutlen = 750 -- Wait no more that timeoutlen for key mappings to complete, change according to your typing speed
 vim.o.completeopt = "menu,menuone,preview,longest,noselect"
 -- }}}
 
@@ -50,17 +50,17 @@ vim.o.fixeol = false -- Turn off appending new line in the end of a file
 -- }}}
 
 -- Search {{{
-vim.o.ignorecase = true  -- Ignore case if all characters in lower case
+vim.o.ignorecase = true -- Ignore case if all characters in lower case
 vim.o.joinspaces = false -- Join multiple spaces in search
 vim.o.incsearch = true
-vim.o.smartcase = true   -- When there is a one capital letter search for exact match
-vim.o.showmatch = true   -- Highlight search instances
+vim.o.smartcase = true -- When there is a one capital letter search for exact match
+vim.o.showmatch = true -- Highlight search instances
 -- }}}
 
 -- Sessions {{{
 vim.o.sessionoptions = "buffers,curdir,globals,tabpages,winpos,winsize" -- Save these in session
-vim.o.backup = false                                                    -- Don't create a backup file
-vim.o.swapfile = false                                                  -- We don't need a swap file
+vim.o.backup = false -- Don't create a backup file
+vim.o.swapfile = false -- We don't need a swap file
 -- }}}
 
 -- Term {{{

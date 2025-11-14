@@ -12,30 +12,30 @@ return {
 		local set = vim.keymap.set
 
 		-- Add or skip cursor above/below the main cursor.
-		set({ "n", "x" }, "<up>", function()
+		set({ "n", "x" }, "<c-k>", function()
 			mc.lineAddCursor(-1)
 		end, { desc = "Add cursor above" })
-		set({ "n", "x" }, "<down>", function()
+		set({ "n", "x" }, "<c-j>", function()
 			mc.lineAddCursor(1)
 		end, { desc = "Add cursor below" })
-		set({ "n", "x" }, "<leader><up>", function()
+		set({ "n", "x" }, "<c-h>", function()
 			mc.lineSkipCursor(-1)
 		end, { desc = "Skip cursor at line above" })
-		set({ "n", "x" }, "<leader><down>", function()
+		set({ "n", "x" }, "<c-l>", function()
 			mc.lineSkipCursor(1)
 		end, { desc = "Skip cursor at line below" })
 
 		-- Add or skip adding a new cursor by matching word/selection
-		set({ "n", "x" }, "<leader>j", function()
+		set({ "n", "x" }, "<M-j>", function()
 			mc.matchAddCursor(1)
 		end, { desc = "Add cursor at next match" })
-		set({ "n", "x" }, "<leader>J", function()
+		set({ "n", "x" }, "<M-l>", function()
 			mc.matchSkipCursor(1)
 		end, { desc = "Skip cursor at next match" })
-		set({ "n", "x" }, "<leader>k", function()
+		set({ "n", "x" }, "<M-k>", function()
 			mc.matchAddCursor(-1)
 		end, { desc = "Add cursor at previous match" })
-		set({ "n", "x" }, "<leader>K", function()
+		set({ "n", "x" }, "<M-h>", function()
 			mc.matchSkipCursor(-1)
 		end, { desc = "Skip cursor at previous match" })
 
