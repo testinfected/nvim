@@ -95,23 +95,16 @@ return {
                 }
             end,
 
-            default_integrations = true,
             auto_integrations = true,
             integrations = {
-                blink_cmp = {
-                    styled = "bordered",
-                },
                 dap = {
-                    enabled = true,
                     enable_ui = true, -- enable nvim-dap-ui
                 },
                 gitsigns = {
-                    enabled = true,
                     -- align with the transparent_background option by default
                     transparent = true,
                 },
                 illuminate = {
-                    enabled = true,
                     lsp = true,
                 },
                 lualine = {
@@ -129,7 +122,6 @@ return {
                     end,
                 },
                 lsp_styles = {
-                    enabled = true,
                     virtual_text = {
                         errors = { "italic" },
                         hints = { "italic" },
@@ -146,10 +138,6 @@ return {
                         background = true,
                     },
                 },
-                mini = {
-                    enabled = true,
-                },
-                neotest = true,
             },
         })
 
