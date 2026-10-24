@@ -38,6 +38,8 @@ return {
             { "z",          group = "Fold" },
             { "K",          group = "Hover" },
             { "<c-w>",      group = "Window" },
+            { "<leader>a",  group = "Agent" },
+            { "<leader>b",  group = "Buffer" },
             { "<leader>c",  group = "Code" },
             { "<leader>d",  group = "Debug" },
             { "<leader>db", group = "Breakpoint" },

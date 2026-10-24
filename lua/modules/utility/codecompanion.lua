@@ -59,6 +59,7 @@ return {
             },
             adapters = {
                 http = {
+                    copilot = false,
                     bedrock = function()
                         local anthropic = require 'codecompanion.adapters.http.anthropic'
 
@@ -316,7 +317,7 @@ return {
                             schema = {
                                 model = {
                                     mapping = 'temp',
-                                    default = 'us.anthropic.claude-sonnet-5',
+                                    default = 'us.anthropic.claude-opus-5-5',
                                     choices = {
                                         ['us.anthropic.claude-fable-5'] = { opts = { can_reason = true, has_vision = true } },
                                         ['us.anthropic.claude-sonnet-5'] = { opts = { can_reason = true, has_vision = true } },
@@ -341,6 +342,9 @@ return {
                         })
                     end,
                 },
+                opts = {
+                    show_presets = false, -- Only display adapters defined in your config
+                }
             },
             display = {
                 action_palette = {
@@ -365,6 +369,9 @@ return {
                 inline = {
                     adapter = 'bedrock',
                 },
+                cmd = {
+                    adapter = "bedrock",
+                },
                 cli = {
                     agent = "claude_code",
                     agents = {
@@ -377,12 +384,14 @@ return {
                     },
                 },
                 background = {
+                    adapter = 'bedrock',
                     chat = {
                         callbacks = {
                             ["on_ready"] = {
                                 actions = {
                                     "interactions.background.builtin.chat_make_title",
                                 },
+                                adapter = 'bedrock',
                                 -- Enable "on_ready" callback which contains the title generation action
                                 enabled = true,
                             },
@@ -393,9 +402,6 @@ return {
                         },
                     },
                 },
-            },
-            opts = {
-                log_level = 'DEBUG',
             },
         },
     },
