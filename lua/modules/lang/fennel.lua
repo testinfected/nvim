@@ -4,9 +4,9 @@
 ]]
 
 return {
-  -- Hotpot fennel compiler {{{
-  'rktjmp/hotpot.nvim',
-  lazy = false,
-  config = true,
+    -- Hotpot fennel compiler {{{
+    'rktjmp/hotpot.nvim',
+    lazy = false,
+    config = true,
+    enabled = false,
 }
-
