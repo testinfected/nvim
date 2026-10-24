@@ -1,8 +1,10 @@
 return {
-    "MeanderingProgrammer/render-markdown.nvim",
-    branch = "main",
-    ft = "markdown", -- or 'event = "VeryLazy"'
+    "OXY2DEV/markview.nvim",
+    lazy = false,
     opts = {
-        -- configuration here or empty for defaults
+        preview = {
+            filetypes = { "markdown", "codecompanion" },
+            ignore_buftypes = {},
+        },
     },
 }
