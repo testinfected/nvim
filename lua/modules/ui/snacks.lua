@@ -19,10 +19,11 @@ return {
             timeout = 3000,
         },
         picker = {
-            sources = {
-                explorer = {
-                    -- your explorer picker configuration comes here
-                    -- or leave it empty to use the default settings
+            win = {
+                input = {
+                    wo = {
+                        virtualedit = "all",
+                    },
                 },
             },
         },
@@ -52,7 +53,8 @@ return {
                 }, -- Wrap notifications
             },
             input = {
-                width = 30,
+                width = 60,
+                expand = 30,
                 relative = "cursor",
             },
         },
@@ -191,74 +193,11 @@ return {
         },
         -- git
         {
-            "<leader>gb",
-            function()
-                Snacks.git.blame_line()
-            end,
-            desc = "Blame line",
-        },
-        {
-            "<leader>gc",
+            "<leader>gg",
             function()
                 Snacks.lazygit()
             end,
-            desc = "Lazygit",
-        },
-        {
-            "<leader>gb",
-            function()
-                Snacks.picker.git_branches()
-            end,
-            desc = "Branches",
-        },
-        {
-            "<leader>gf",
-            function()
-                Snacks.picker.git_log_line()
-            end,
-            desc = "Log file",
-        },
-        {
-            "<leader>gl",
-            function()
-                Snacks.picker.git_log()
-            end,
-            desc = "Log",
-        },
-        {
-            "<leader>gL",
-            function()
-                Snacks.picker.git_log_line()
-            end,
-            desc = "Log line",
-        },
-        {
-            "<leader>gs",
-            function()
-                Snacks.picker.git_status()
-            end,
-            desc = "Status",
-        },
-        {
-            "<leader>gS",
-            function()
-                Snacks.picker.git_stash()
-            end,
-            desc = "Stash",
-        },
-        {
-            "<leader>gd",
-            function()
-                Snacks.picker.git_diff()
-            end,
-            desc = "Diff",
-        },
-        {
-            "<leader>gh",
-            function()
-                Snacks.picker.git_log_file()
-            end,
-            desc = "History",
+            desc = "Open lazygit",
         },
         -- search
         {
