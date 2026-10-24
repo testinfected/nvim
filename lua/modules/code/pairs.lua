@@ -1,6 +1,6 @@
 return {
     'saghen/blink.pairs',
-    version = '0.6.0', -- (recommended) only required with prebuilt binaries
+    version = '0.7.1', -- (recommended) only required with prebuilt binaries
 
     -- download prebuilt binaries from github releases
     dependencies = 'saghen/blink.lib',
@@ -21,6 +21,15 @@ return {
             -- or disable with `vim.g.pairs = false` (global) and `vim.b.pairs = false` (per-buffer)
             -- and/or with `vim.g.blink_pairs = false` and `vim.b.blink_pairs = false`
             disabled_filetypes = {},
+            wrap = {
+                -- move closing pair via motion
+                ['<C-b>'] = 'motion',
+                -- move opening pair via motion
+                ['<C-S-b>'] = 'motion_reverse',
+                -- set to 'treesitter' or 'treesitter_reverse' to use treesitter instead of motions
+                -- set to nil, '' or false to disable the mapping
+                -- normal_mode = {} <- for normal mode mappings, only supports 'motion' and 'motion_reverse'
+            },
             -- see the defaults:
             -- https://github.com/Saghen/blink.pairs/blob/main/lua/blink/pairs/config/mappings.lua#L14
             pairs = {},
