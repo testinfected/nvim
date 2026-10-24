@@ -92,7 +92,7 @@ return {
         Diff = "",
         Repo = "",
         Octoface = "",
-        Branch = "",
+        Branch = "", -- or ""
         Git = "󰊢",
     },
     lsp = {
@@ -125,6 +125,11 @@ return {
         Hint    = " ",
         Action  = "󰙈",
         Lens    = "󰧶",
+    },
+    os = {
+        Unix = "",
+        Dos = "",
+        Mac = "",
     },
     ui = {
         ChevronRight = "",
