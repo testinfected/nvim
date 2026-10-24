@@ -4,13 +4,13 @@
 
 local map = vim.keymap.set
 
-map("n", "x", '"_x', { desc = "Delete character under cursor" }) -- don't put cut characters in register
+map("n", "x", '"_x', { desc = "Delete character under cursor" })  -- don't put cut characters in register
 map("n", "r", '"_r', { desc = "Replace character under cursor" }) -- don't put cut characters in register
 map({ "i", "n" }, "<ESC>", [[<Cmd>noh<CR><ESC>]], { desc = "Escape and clear search highlighting" })
 
 -- Break the habit of using arrow keys in normal mode. Not for the faint of heart!
 for _, arrow_key in ipairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
-	map("n", arrow_key, "<Nop>")
+  map("n", arrow_key, "<Nop>")
 end
 
 -- Save using CTRL-s and exit insert mode
@@ -27,6 +27,10 @@ map("i", "<C-k>", "<Right>")
 --The & command repeats the last substitution (synonym for :s).
 -- Unfortunately, it disregards flags, so make & trigger the :&& command which preserves flags
 map({ "n", "x" }, "&", "<Cmd>&&<CR>", { desc = "Repeat last substitution" })
+
+-- better indenting
+map("x", "<", "<gv")
+map("x", ">", ">gv")
 
 -- Splits
 map("n", "<leader>wv", "<C-w>v", { desc = "Vertically" })
